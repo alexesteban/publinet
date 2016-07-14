@@ -22,8 +22,7 @@
 	}*/
 
 	$result = $conn->query("SELECT email FROM info LIMIT 1");
-	$rs = $result->fetch_array(MYSQLI_ASSOC);
-	$email_amarillas =  $rs["email"];
+	$rs = $result->fetch_array(MYSQLI_ASSOC);	$email_amarillas =  $rs["email"];
 
 	$EmailReceptor = $email_amarillas;
 	//Envía el Email de Contacto

@@ -1,0 +1,118 @@
+<div class="av-full-wrapper silver">	<div class="compensate-header"></div>
+	<div class="av-section">
+	<h1 class="title">Mi Directorio</h1>
+
+	<div class="loading" ng-if="!empresas">
+		<i class="fa fa-spinner fa-pulse"></i>
+		<span>Cargando...</span>
+	</div>
+
+	<div ng-if="empresas">
+
+	<div ng-if="empresas == ''">
+		No se encontraron resultados
+	</div>
+
+	<!-- Brand -->
+	<div class="av-material-resume-corp" ng-if="empresas != ''" ng-repeat="empresa in empresas | limitTo: paginationLimit()">
+		<div class="av-card">
+		<div class="card-search-brands">
+			<div class="av-photo">
+				<img src="assets/img/brands/{{empresa.logo}}" alt="{{empresa.nombre}}">
+			</div>
+			<div class="av-content">
+				<div class="av-content-top">
+					<h1 class="av-brand-title crop-global-text">
+						{{empresa.nombre}}
+					</h1>
+
+					<div class="av-brand-score">
+						<span ng-controller="scoreCtrl">
+							<span ng-init="init(empresa.id)" >
+								<input-stars ng-if="isScored" max="5" ng-model="empresa.cantEstrellas" readonly="true" ></input-stars>
+								<input-stars ng-if="!isScored" max="5" ng-model="empresa.cantEstrellas" ng-disabled="isScored"  ng-click="score(empresa.cantEstrellas, empresa.id)" ></input-stars>
+							</span>
+						</span>
+						<span class="av-txt-score">{{(empresa.puntaje)}}</span>
+					</div>
+					<div class="av-brand-social">
+						<a ng-if="empresa.facebook" href="{{empresa.facebook}}" target="_blank">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a ng-if="empresa.twitter" href="{{empresa.twitter}}" target="_blank">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a ng-if="empresa.instagram" href="{{empresa.instagram}}" target="_blank">
+							<i class="fa fa-instagram"></i>
+						</a>
+					</div>
+					<div class="av-brand-category">
+						<i class="fa fa {{empresa.icono}}"></i>
+						<span>{{empresa.categoria}}</span>
+					</div>
+				</div>
+				<div class="av-content-middle">
+					<div class="av-brand-contact">
+						<span class="av-ico-o">
+							<span class="yellow">
+								<i class="fa fa-phone"></i>
+							</span>
+						</span>
+						<span class="av-contact-txt">{{empresa.telefono}} <span ng-if="empresa.telefono && empresa.celular">-</span> {{empresa.celular}}</span>
+					</div>
+					<div class="av-brand-contact">
+						<span class="av-ico-o">
+							<span class="yellow">
+								<i class="fa fa-building"></i>
+							</span>
+						</span>
+						<span class="av-contact-txt">{{empresa.direccion}}</span>
+					</div>
+					<div class="av-brand-contact">
+						<span class="av-ico-o">
+							<span class="yellow">
+								<i class="fa fa-envelope"></i>
+							</span>
+						</span>
+						<span class="av-contact-txt">{{empresa.email}}</span>
+					</div>
+					<div class="av-add-directory" ng-controller="favoriteCtrl">
+
+						<span ng-init="init(empresa.id)" >
+							<a href="" ng-if="!isFavorite" ng-click="updFavorite(empresa.id)">
+								<i class="fa fa-heart"></i>
+								<span>Agregar a mi Directorio</span>
+							</a>
+
+							<a href="" ng-if="isFavorite" ng-click="updFavorite(empresa.id)">
+								<i class="fa fa-heart light"></i>
+								<span>Quitar de mi Directorio</span>
+							</a>
+						</span>
+
+					</div>
+				</div>
+				<div class="av-content-bottom">
+					<p class="av-brand-text">
+						{{empresa.descripcion}}
+					</p>
+				</div>
+			</div>
+		</div>
+			<a href="" class="av-btn-card av-btn-card-plus">
+				<i class="fa fa-plus"></i>
+			</a>
+		</div>
+	</div>
+	<!-- /Brand -->
+
+	<div class="text-center">		<a href="" class="av-btn-defaul av-btn-blue" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()"
+		data-toggle="tooltip" data-placement="top" title="Registrar Empresa">VER MÁS</a>
+	</div>
+
+	</div>
+
+
+</div>
+
+</div>

@@ -1,0 +1,133 @@
+<h2 class="header smaller lighter blue text-center">
+	Blogs
+</h2>
+<div class="row">
+
+  <div class="text-center">
+    <a href="" class="btn btn-success" data-toggle="modal" data-target="#newBlog">Crear Blog</a>
+  </div>
+
+  <!-- Modal -->
+  	<div class="modal fade" id="newBlog" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  	    <div class="modal-dialog">
+  	        <div class="modal-content">
+  	            <div class="modal-header">
+  	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+  	            <h4 class="modal-title" id="myModalLabel">Crear un nuevo Blog</h4>
+  	            </div>
+  	            <div class="modal-body">
+  	            	<form ng-submit="addBlog()">
+  	            		<div class="row">
+  	            			<div class="col-sm-12">
+  	            				<div class="form-group">
+                          <span>Titulo del Blog</span>
+                          <input type="text" ng-model="Titulo" class="form-control">
+  	            				</div>
+  	            			</div>
+  	            		</div>
+                    <div class="row">
+  	            			<div class="col-sm-12">
+  	            				<div class="form-group">
+                          <span>Contenido del Blog</span>
+                          <textarea ng-model="Contenido" class="form-control" style="height:280px" ></textarea>
+  	            				</div>
+  	            			</div>
+  	            		</div>
+                    <div class="row">
+  	            			<div class="col-sm-12">
+  	            				<div class="form-group">
+                          <span>Imagen</span>
+                          <input type="file" fileread="imagenBlog" class="form-control"  />
+                          <br>
+                          <p>
+                            <i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+                            Recuerda que las medidas de la imagen son obligatoriamente (620px * 228px), si no respetas estas medidas, podrás causar serios problemas en el diseño y la visualización del contenido
+                          </p>
+                          <p>
+                            Si no posees una herramienta para crotar imagenes, te recomendamos esta: <a href="http://www.fotor.com/app.html#!module/basic/tool/BasicEdits" target="_blank">www.fotor.com</a>
+                          </p>
+  	            				</div>
+  	            			</div>
+  	            		</div>
+  	            		<div class="row">
+  	            			<div class="col-sm-12">
+                        <div ng-if="newError" class="alert alert-danger" role="alert">{{newError}}</div>
+              					<div ng-if="newSuccess" class="alert alert-float alert-success" role="alert" timeout>{{newSuccess}}</div>
+  	            				<div class="text-center">
+  	            					<button type="submit" class="btn btn-success">
+  	            						<i class="fa fa-plus"></i>
+  	            						CREAR
+  	            					</button>
+  	            				</div>
+  	            			</div>
+  	            		</div>
+  	            	</form>
+  	            </div>
+  	    </div>
+  	  </div>
+  	</div>
+  <!-- Fin -->
+
+	<div class="col-sm-12 col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>Blogs Creados</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="table-responsive">
+
+								<table class="Tabla table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Imagen</th>
+											<th>Titulo</th>
+											<th>Contenido</th>
+											<th>Publicado</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+										</tr>
+									</thead>
+									<tbody sortable data="blogs" >
+
+
+													<tr id="articulo-{{blog.id}}" ng-repeat="blog in blogs">
+														<td>
+                              <img style="max-width:150px;" ng-src="../assets/img/blog/{{blog.imagen}}" alt="">
+                            </td>
+														<td>
+                              {{blog.titulo}}
+                            </td>
+														<td>
+                              <div class="contBlog">
+                                {{blog.contenido}}
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <md-switch ng-change="updEstadoBlog(blog.id,blog.publicado)" class="md-primary" md-no-ink aria-checked="blog.publicado" aria-label="publicado" ng-model="blog.publicado">
+														</td>
+                            <td class="text-center">
+                              <a href="#/blog/{{blog.id}}" class="icono-crud delete confirmation green" title="Editar" >
+                                <i class="fa fa-pencil bigger-130"></i>
+                              </a>
+                            </td>
+														<td class="text-center">
+                              <a href="" ng-click="delBlog($event,blog.id,blog.imagen)" class="icono-crud delete confirmation red" title="Eliminar" >
+                                <i class="fa fa-trash bigger-130"></i>
+                              </a>
+                            </td>
+													</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

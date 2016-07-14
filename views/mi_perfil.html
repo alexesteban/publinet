@@ -1,0 +1,192 @@
+<div class="av-full-wrapper silver">	<div class="compensate-header"></div>
+	<div class="av-section">
+		<h1 class="title">Mi Perfil</h1>
+
+	<div class="row">			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<div class="av-form-wrapper white">
+
+						<div class="editAvatar">
+								<div ng-if="avatar == ''" >
+									<img src="assets/img/avatar/default.png" alt="">
+							</div>
+								<div  ng-if="avatar != ''">
+									<img ng-src="{{avatar}}" />
+							</div>
+							</div>
+
+							<hr>
+
+							<!-- Nav tabs -->
+							  <ul tabs class="nav nav-pills nav-stacked" role="tablist">
+							  	<li role="presentation"><a href="#avatar" aria-controls="avatar" role="tab" data-toggle="tab">Mi Avatar</a></li>
+							    <li role="presentation" class="active"><a href="#datos" aria-controls="datos" role="tab" data-toggle="tab">Mis Datos</a></li>
+							    <li ng-show="IsPass == 0" role="presentation"><a href="#password" aria-controls="password" role="tab" data-toggle="tab">Mi Contraseña</a></li>
+							  </ul>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-8">
+						<div class="av-form-wrapper white">
+							<div class="tab-content">
+
+								<div role="tabpanel" class="tab-pane" id="avatar">
+									<h1>Mi Avatar</h1>
+									<div ng-if="avError" class="alert alert-danger" role="alert">{{avError}}</div>
+									<div ng-if="avSucces" class="alert alert-float alert-success" role="alert" timeout>{{avSucces}}</div>
+									<form ng-submit="funavatar()">
+									<div class="row form-group">
+											<div class="col-xs-12 col-sm-12">
+												<div class="changeAvatar">
+												<input type="file" id="fileInput" />
+													<div class="wrapper-change-avatar">
+														<span>Click para cambiar tu Avatar</span>
+														<img src="assets/img/changeavatar.png" alt="">
+													</div>
+											</div>
+
+												<div class="cropArea"	>
+													<img-crop
+													image="myImage"
+														result-image="myCroppedImage"
+														area-type="circle"
+														area-min-size="120"
+														result-image-size="120"
+													result-image-quality="1.0"></img-crop>
+												</div>
+											</div>
+									</div>
+
+										<hr>
+
+										<div class="row">
+												<div class="col-xs-12 text-center">
+													<button type="submit" class="av-btn-defaul btn-this">ACTUALZAR</button>
+												</div>
+										</div>
+
+									</form>
+
+
+							</div>
+
+				    			<div role="tabpanel" class="tab-pane active" id="datos">
+
+			    			<h1>Mis Datos</h1>									<div ng-if="updError" class="alert alert-danger" role="alert">{{updError}}</div>
+									<div ng-if="updSucces" class="alert alert-float alert-success" role="alert" timeout>{{updSucces}}</div>
+								<form ng-submit="updateDatos()">
+								<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+											 <label>Nombres</label>
+											 <input type="text" ng-model="updNombres" ng-required="true">
+										 </md-input-container>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+											 <label>Apellidos</label>
+											 <input type="text" ng-required="true" ng-model="updApellidos">
+										 </md-input-container>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+										 <label>Telefono</label>
+											 <input type="text" ng-model="updTelefono">
+
+									 </md-input-container>									</div>
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+											 <label>Celular</label>
+										 <input type="text" ng-required="true" ng-model="updCelular">
+										 </md-input-container>
+										</div>
+									</div>
+								<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+											 <label>Direccion</label>
+										 <input type="text" ng-model="updDireccion">
+										 </md-input-container>
+										</div>
+									<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+											 <label>Ciudad</label>
+											 <input type="text" ng-required="true" ng-model="updCiudad">
+										 </md-input-container>
+										</div>
+									</div>
+
+									<div ng-show="IsEmail == 1" class="row form-group">
+									<div class="col-xs-12 col-sm-12">
+											<md-input-container class="md-block" flex-gt-sm>
+											 <label>Email</label>
+											 <input type="text" ng-required="true" ng-model="updEmail">
+										 </md-input-container>
+										</div>
+									</div>
+
+								<hr/>
+
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 text-center">
+											<button type="submit" class="av-btn-defaul btn-this">
+												ACTUALZAR
+										</button>
+										</div>
+									</div>
+								</form>
+
+			    			</div>				    			<div ng-show="IsPass == 0" role="tabpanel" class="tab-pane" id="password">
+				    				<h1>Cambiar Contraseña</h1>
+									<div ng-if="passError" class="alert alert-danger" role="alert">{{passError}}</div>
+										<div ng-if="passSucces" class="alert alert-float alert-success" role="alert" timeout>{{passSucces}}</div>
+									<form ng-submit="updPassword()">
+										<div class="row form-group" >
+											<div class="col-xs-12 col-sm-12">
+												<md-input-container class="md-block" flex-gt-sm>
+												 <label>Contraseña Actual (*)</label>
+											 <input type="password" ng-model="oldPassword" ng-required="true">
+											 </md-input-container>
+											</div>
+										</div>
+										<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+												<md-input-container class="md-block" flex-gt-sm>
+												 <label>Contraseña Nueva (*)</label>
+												 <input type="password" ng-model="newPass" ng-required="true">
+											 </md-input-container>
+										</div>
+											<div class="col-xs-12 col-sm-6">
+												<md-input-container class="md-block" flex-gt-sm>
+												 <label>Repite la Contraseña (*)</label>
+											 <input type="password" ng-model="newPassword" ng-required="true">
+											 </md-input-container>
+											</div>
+										</div>
+
+										<hr/>
+
+										<div class="row">											<div class="col-xs-12 col-sm-12 text-center">
+												<button type="submit" class="av-btn-defaul btn-this">
+													ACTUALZAR
+												</button>
+											</div>
+										</div>
+
+									</form>
+
+
+
+				    			</div>
+			    		</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	</div>
+
+	</div>
+</div>

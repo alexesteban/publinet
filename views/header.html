@@ -1,0 +1,79 @@
+<div class="pb-header pb-bg-header">	<div class="pb-header-wraper">
+		<div class="pb-logo-wraper">
+			<a href="#/home">
+				<img src="assets/img/logo-svg.svg" alt="Publinet">
+			</a>
+		</div>
+
+		<!-- Menu para Moviles y Tablets -->
+			<div id="TabletMenu">
+				<a href="#menu"><i class="fa fa-bars"></i></a>
+			</div>
+
+			<div id="TabletMenu" class="text-right">
+				<nav id="menu" mmenu class="mm-white">
+					<ul>
+						<li ng-if="!loggedIn && loggedIn == '' ">
+							<a href="#/login" >Ingresa</a>
+						</li>
+						<li>
+							<a href="#/pauta_con_nosotros">Pauta con Nosotros</a>
+						</li>
+						<li>
+							<a href="#/registrar_empresa">Publica tu Empresa</a>
+						</li>
+						<li>
+							<a href="#/blog">Recomendados</a>
+						</li>
+						<li>
+							<a href="#/contactanos">Contácto</a>
+						</li>
+
+						<hr ng-if="loggedIn && loggedIn != '' ">
+						<li ng-if="loggedIn && loggedIn != '' "><a href="#/mi_directorio">Mi Directorio</a></li>
+						<li ng-if="loggedIn && loggedIn != '' "><a href="#/mi_perfil">Mi Perfil</a></li>
+						<li ng-if="loggedIn && loggedIn != '' "><a href="#/mis_empresas">Mis Empresas</a></li>
+						<li ng-if="loggedIn && loggedIn != '' "><a href="" ng-click="logout()" >Salir</a></li>
+					</ul>
+				</nav>
+			</div>
+		<!-- Fin Menu -->
+
+		<div class="pb-menu-wraper">			<ul>
+				<li>
+					<a href="#/registrar_empresa">Publica tu Empresa</a>
+				</li>
+				<li>
+					<a href="#/blog">Recomendados</a>
+				</li>
+				<li>
+					<a href="#/contactanos">Contácto</a>
+				</li>
+			</ul>
+				<span>
+					<a ng-if=" !loggedIn || loggedIn == '' " href="#/login" class="pb-button-login av-inline" data-toggle="tooltip" title="Ingresa con tu cuenta o registrate">Ingresa</a>
+					<div ng-if="loggedIn && loggedIn != '' " class="dropdown" style="float:left">
+						<a class="av-avatar dropdown-toggle" href=""  id="perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							<img ng-if="avatar == ''" src="assets/img/avatar/default.png" alt="">
+							<img ng-if="avatar != ''" ng-src="{{avatar}}" />
+						</a>
+						<ul class="dropdown-menu " aria-labelledby="perfil">
+							<li><a href="#/mi_directorio">Mi Directorio</a></li>
+							<li><a href="#/mi_perfil">Mi Perfil</a></li>
+							<li><a href="#/mis_empresas">Mis Empresas</a></li>
+							<li><a href="" ng-click="logout()" >Salir</a></li>
+						</ul>
+					</div>
+				</span>
+		</div>
+	</div>
+</div>
+
+<div class="av-pauta">	<a href="#/pauta_con_nosotros">
+		<i class="fa fa-bullhorn"></i>
+	</a>
+	<div class="av-pauta-wrapper">
+		<h1>Pauta con Nosotros</h1>
+		<p>Diligencia tus datos y pauta con la mejor plataforma de publicidad</p>
+	</div>
+</div>

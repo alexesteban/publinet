@@ -1,0 +1,50 @@
+<div class="row">
+
+
+	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>{{titulo}}</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+
+					<form ng-submit="updBlog(idBlog,imagen)">
+
+						<div class="form-group">
+							<span>Titulo</span>
+							<input type="text" class="form-control" ng-model="titulo" value="{{titulo}}">
+						</div>
+
+						<hr>
+
+						<div class="editImage">
+							<img src="../assets/img/blog/{{imagen}}" alt="" style="width:100%">
+							<br><br>
+							<div class="form-group">
+								<span>Cambiar Imagen</span>
+								<input type="file" fileread="imagenBlog" class="form-control"  />
+							</div>
+						</div>
+
+						<hr>
+
+						<textarea name="name" style="height:350px" class="form-control" ng-model="contenido">{{contenido}}</textarea>
+
+						<div ng-if="error" class="alert alert-danger" role="alert">{{error}}</div>
+						<div ng-if="success" class="alert alert-float alert-success" role="alert" timeout>{{success}}</div>
+
+						<hr>
+
+						<div class="text-center">
+							<button type="submit" class="btn btn-success">
+								GUARDAR
+							</button>
+					  </div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

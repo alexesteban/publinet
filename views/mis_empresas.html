@@ -1,0 +1,48 @@
+<div class="av-full-wrapper silver">	<div class="compensate-header"></div>
+	<div class="av-section">
+		<h1 class="title">Mis Empresas</h1>
+	</div>
+
+	<ul class="empresas-wrapper" ng-show="misEmpresas.length != 0">		<li class="empresa-wrapper" ng-repeat="empresa in misEmpresas">
+			<div class="image">
+				<a href="#/empresa/{{empresa.guid}}" class="editInfo">
+					<span>Editar Info</span>
+				</a>
+				<img ng-src="assets/img/brands/{{empresa.logo}}" alt="">
+			</div>
+			<div class="info">
+				<div class="isActive" ng-class="{'activo':empresa.activo == 1,'inactivo':empresa.activo == 0}">
+					<span ng-if="empresa.activo == 0">Inactivo</span>
+					<span ng-if="empresa.activo == 1">Activo</span>
+				</div>
+				<h2>{{empresa.nombre}}</h2>
+				<p class="uppercase"><strong>{{empresa.plan}}</strong></p>
+				<span ng-if="empresa.dias" class="diasF">Vence en: {{empresa.dias}} Dias</span>
+				<div class="row-fluid estadisticas">
+					<div class="col-xs-6">
+						<p><strong>{{empresa.favoritos}}</strong> favoritos</p>
+					</div>
+					<div class="col-xs-6">
+						<p><strong>{{empresa.visitas}}</strong> visitas</p>
+					</div>
+					<div class="col-xs-6">
+						<p><strong ng-if="!empresa.estrellas">0</strong><strong>{{empresa.estrellas}}</strong> estrellas</p>
+					</div>
+					<div class="col-xs-6">
+						<p><strong>{{empresa.comentarios}}</strong> Comentarios</p>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div ng-show="misEmpresas.length == 0" >
+
+		<div class="text-center">
+			<h2>No hay ninguna empresa</h2>
+			<a href="#/registrar_empresa" class="pb-button pb-button--standard">Registra tu Empresa</a>
+		</div>
+
+	</div>
+
+</div>

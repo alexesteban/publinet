@@ -1,0 +1,429 @@
+<div class="av-full-wrapper aqua-green">
+	<div class="compensate-header"></div>
+	<div class="av-section">
+		<h1 class="title">{{nombre}}</h1>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12">
+
+				<div ng-if="error" class="alert alert-danger" role="alert">{{error}}</div>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-3">
+						<div class="av-form-wrapper white">
+
+							<div class="form-group">
+								<h3>Administador</h3>
+							</div>
+
+							<hr>
+
+							<!-- Nav tabs -->
+							  <ul id="tabs" tabs class="nav nav-pills nav-stacked" role="tablist">
+									<li role="presentation"><a href="#logo" aria-controls="logo" role="tab" data-toggle="tab">Logo</a></li>
+							  	<li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+							    <li role="presentation"><a href="#galeria" aria-controls="galeria" role="tab" data-toggle="tab">Galería</a></li>
+							    <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+							    <li role="presentation"><a href="#360" aria-controls="360" role="tab" data-toggle="tab">360°</a></li>
+									<li role="presentation"><a href="#tags" aria-controls="tags" role="tab" data-toggle="tab">Tags</a></li>
+							    <!--li role="presentation"><a href="#comentarios" aria-controls="comentarios" role="tab" data-toggle="tab">Comentarios</a></li-->
+							  </ul>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-9">
+						<div class="av-form-wrapper white">
+							<div class="tab-content">
+
+								<div role="tabpanel" class="tab-pane" id="logo">
+									<h1>Logo de la Empresa</h1>
+
+									<div ng-if="avError" class="alert alert-danger" role="alert">{{avError}}</div>
+									<div ng-if="avSucces" class="alert alert-float alert-success" role="alert" timeout>{{avSucces}}</div>
+									<form ng-submit="updLogo()">
+										<div class="row form-group">
+											<div class="col-xs-12 col-sm-12">
+												<div class="changeAvatar">
+													<input type="file" id="fileInput" />
+													<div class="wrapper-change-avatar">
+														<span>Click para cambiar el Logo</span>
+														<img src="assets/img/changelogo.png" alt="">
+													</div>
+												</div>
+
+												<div class="cropArea"	>
+													<img-crop
+														image="myImage"
+														result-image="myCroppedImage"
+														area-type="square"
+														area-min-size="350"
+														result-image-size="350"
+														result-image-quality="1.0"></img-crop>
+												</div>
+											</div>
+										</div>
+
+										<hr>
+
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 text-center">
+													<button type="submit" class="av-btn-defaul btn-this">ACTUALZAR</button>
+												</div>
+											</div>
+
+									</form>
+
+								</div>
+
+								<div role="tabpanel" class="tab-pane active" id="general">
+									<div class="isActive" ng-class="{'activo':activo == 1,'inactivo':activo == 0}">
+										<span ng-if="activo == 0">Inactivo</span>
+										<span ng-if="activo == 1">Activo</span>
+										<a ng-if="activo == 0" class="av-btn-activar" href="#/pago/{{guid}}/{{plan}}" target="_blank">Activar</a>
+									</div>
+									<h1>Información General</h1>
+
+									<form ng-submit="updateDatos()">
+
+									<div class="row form-group">
+										<div class="col-xs-12 col-sm-12">
+											<md-input-container class="md-block">
+							          <label>Descripcion</label>
+							          <textarea ng-model="descripcion" md-maxlength="150" rows="5" md-select-on-focus ng-required="true"></textarea>
+							        </md-input-container>
+										</div>
+									</div>
+
+									<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Telefono</label>
+												 <input type="text" ng-model="telefono" ng-required="true">
+											 </md-input-container>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Celular</label>
+												 <input type="text" ng-model="celular" ng-required="true">
+											 </md-input-container>
+										</div>
+									</div>
+
+									<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Email Empresa</label>
+												 <input type="text" ng-model="email" ng-required="true">
+											 </md-input-container>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Link Facebook</label>
+												 <input type="text" ng-model="facebook">
+											 </md-input-container>
+										</div>
+									</div>
+
+									<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Link Twitter</label>
+												 <input type="text" ng-model="twitter">
+											 </md-input-container>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Link Instagram</label>
+												 <input type="text" ng-model="instagram" >
+											 </md-input-container>
+										</div>
+									</div>
+
+									<div class="row form-group">
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Dirección</label>
+												 <input type="text" ng-model="direccion">
+											 </md-input-container>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											<md-input-container class="md-block" flex-gt-sm>
+												 <label>Pagina Web</label>
+												 <input type="text" ng-model="web">
+											 </md-input-container>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col-xs-12 col-sm-12">
+											<span>Mapa</span>
+											<input type="hidden" ng-model="latitud">
+											 <input type="hidden" ng-model="longitud">
+											<p>Haga click en el mapa para definir la localización de su empresa</p>
+											<div id="maped" maped="updCoords(latitud,longitud)" class="av-map-search" ></div>
+										</div>
+									</div>
+
+									<hr>
+
+									<div ng-if="updError" class="alert alert-danger" role="alert">{{updError}}</div>
+									<div ng-if="updSucces" class="alert alert-float alert-success" role="alert" timeout>{{updSucces}}</div>
+
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 text-center">
+												<button type="submit" class="av-btn-defaul btn-this">
+													ACTUALZAR
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+
+								<!-- Galeria -->
+				    		<div role="tabpanel" class="tab-pane" id="galeria">
+				    			<h1>Galería</h1>
+
+										<div ng-if="plan == 1">
+											Compra <a href="#/pago/{{guid}}/2">Premium</a> o <a href="#/pago/{{guid}}/3">Gold</a>
+										</div>
+
+										<div ng-show="plan != 1">
+
+											<div ng-controller="galleryCtrl">
+
+												<span ng-if="idEmpresa" ng-init="init(idEmpresa)">
+
+													<div ng-if="gallery.length >= 20 && (plan == 2 || plan == 4)">
+														Has completado el cupo de imagenes en tu plan Premium, para subir más imagenes compra un plan <a href="#/pago/{{guid}}/3">Gold</a>
+													</div>
+
+													<div ng-if="gallery.length >= 40 && plan == 3">
+														Has completado el cupo de imagenes en tu plan GOLD
+													</div>
+
+												</span>
+
+													<div ng-show="(gallery.length < 20 && (plan == 2 || plan == 4)) || (gallery.length < 40 && plan == 3)" class="row form-group">
+														<div class="col-sm-12">
+															<form ng-submit="updImagen(idEmpresa)">
+																<div class="row form-group">
+																	<div class="col-sm-12">
+
+
+
+																		<div class="changeAvatar" >
+																			<input type="file" id="imgInput" />
+																			<div class="wrapper-change-avatar">
+																				<span>Subir imagen</span>
+																				<img src="assets/img/changelogo.png" alt="">
+																			</div>
+																		</div>
+																		<md-input-container class="md-block" flex-gt-sm>
+																			 <label>Descripción</label>
+																			 <input type="text" ng-model="descImg" >
+																		 </md-input-container>
+
+																		<div class="cropArea" ng-show="isImg">
+																			<img-crop
+																				image="myGal"
+																				result-image="myCroppedGal"
+																				area-type="square"
+																				area-min-size="400"
+																				result-image-size="400"
+																				result-image-quality="1.0"></img-crop>
+																		</div>
+																	</div>
+																</div>
+
+																<hr>
+
+																	<div class="row">
+																		<div class="col-sm-12 text-center">
+																			<button type="submit" class="av-btn-defaul btn-this">SUBIR</button>
+																		</div>
+																	</div>
+
+															</form>
+
+														</div>
+													</div>
+
+													<div class="gallery" >
+
+														<span >
+															<div ng-if="gallery" class="image" ng-repeat="galeria in gallery">
+																<a href="assets/img/galeria/{{galeria.imagen}}" class="big"><img ng-src="assets/img/galeria/{{galeria.imagen}}" alt="" title="{{galeria.descripcion}}" /></a>
+																<a href="" ng-click="deleteImg($event,galeria.id,idEmpresa,galeria.imagen)" class="Delete">Borrar</a>
+															</div>
+														</span>
+
+													</div>
+
+
+
+
+											</div>
+
+										</div>
+				    			</div>
+									<!-- End Galeria -->
+
+									<!-- Video -->
+				    			<div role="tabpanel" class="tab-pane" id="video" >
+				    				<h1>Video</h1>
+										<div ng-if="errVideo" class="alert alert-danger" role="alert">{{errVideo}}</div>
+										<div ng-if="sucVideo" class="alert alert-float alert-success" role="alert" timeout>{{sucVideo}}</div>
+
+										<div ng-if="plan != 3">
+											Compra <a href="#/pago/{{guid}}/3">Gold</a>
+										</div>
+
+										<!-- TODO: Cambiar los ng-show por ng-if, cuidado con los dos caminos del scope -->
+										<div ng-show="plan == 3">
+											<form ng-submit="updVideo(idEmpresa)">
+											<div class="row form-group">
+												<div class="col-sm-12">
+													<md-input-container class="md-block" flex-gt-sm>
+														 <label>Link del Video</label>
+														 <input type="text" ng-model="video" >
+													 </md-input-container>
+												</div>
+											</div>
+
+											<hr/>
+
+											<div class="row">
+												<div class="col-sm-12 text-center">
+													<button type="submit" class="av-btn-defaul btn-this">
+														ACTUALZAR
+													</button>
+												</div>
+											</div>
+											</form>
+										</div>
+
+				    			</div>
+									<!-- End Video -->
+
+
+									<!-- Video -->
+				    			<div role="tabpanel" class="tab-pane" id="360">
+				    				<h1>Vista 360°</h1>
+
+										<div ng-if="plan != 3">
+											Compra <a href="#/pago/{{guid}}/3">Gold</a>
+										</div>
+										<div ng-show="plan == 3">
+
+											<form ng-submit="updPanorama(idEmpresa)">
+
+												<div ng-if="errPanorama" class="alert alert-danger" role="alert">{{errPanorama}}</div>
+												<div ng-if="sucPanorama" class="alert alert-float alert-success" role="alert" timeout>{{sucPanorama}}</div>
+
+												<div class="row form-group">
+													<div class="col-sm-12">
+														<span>Sube sólamente archivos .SWF</span>
+														<input type="file" fileread="panorama" class="form-control"  />
+													</div>
+												</div>
+
+												<hr/>
+
+												<div class="row">
+													<div class="col-sm-12 text-center">
+														<button type="submit" class="av-btn-defaul btn-this">
+															ACTUALZAR
+														</button>
+													</div>
+												</div>
+
+											</form>
+
+										</div>
+
+				    			</div>
+									<!-- End Video -->
+
+
+									<!-- Tags -->
+				    			<div role="tabpanel" class="tab-pane" id="tags">
+				    				<h1>Tags</h1>
+
+										<div ng-if="errTags" class="alert alert-danger" role="alert">{{errTags}}</div>
+										<div ng-if="sucTags" class="alert alert-float alert-success" role="alert" timeout>{{sucTags}}</div>
+
+
+											<form ng-submit="updTags(idEmpresa)">
+
+												<div class="row">
+													<div class="col-sm-12">
+														<span>Escribe las palabras clave con las cuales las personas van a encontrar tu empresa, oprime enter para agregar un tag</span>
+														<md-content class="md-padding autocomplete" layout="column" ng-controller="tagsCtrl">
+															<md-chips ng-model="etiquetas" md-autocomplete-snap>
+																<md-autocomplete
+																		 md-search-text="searchText"
+																		 md-items="item in queryGroups(searchText)"
+																		 md-item-text="item"
+																		 md-autoselect="true"
+																		 md-select-on-match="true"
+																		 md-no-cache="true"
+																		 md-require-match="true"
+																		 placeholder="Find a group..">
+																		<span md-highlight-text="searchText">{{item}}</span>
+																</md-autocomplete>
+																<md-chip-template>
+																		<span>{{$chip}}</span>
+																</md-chip-template>
+															</md-chips>
+														</md-content>
+													</div>
+												</div>
+
+												<hr/>
+												<div class="row">
+													<div class="col-sm-12 text-center">
+														<button type="submit" class="btn btn-success">
+															ACTUALZAR
+														</button>
+													</div>
+												</div>
+
+											</form>
+
+				    			</div>
+									<!-- End Tags -->
+
+
+									<!-- Comentarios -->
+					    		<div role="tabpanel" class="tab-pane" id="comentarios">
+					    			<h1>Comentarios</h1>
+
+											<div ng-if="plan != 2 && plan != 3">
+												Compra <a href="#/pago/{{guid}}/2">Premium</a> o <a href="#/pago/{{guid}}/3">Gold</a>
+											</div>
+
+											<div ng-if="plan == 2 || plan == 3">
+
+												<div class="row form-group">
+													<div class="col-sm-12">
+														Comentarios
+													</div>
+												</div>
+
+											</div>
+
+								    </div>
+					    			</div>
+										<!-- End Comentarios -->
+
+
+
+
+				    		</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>

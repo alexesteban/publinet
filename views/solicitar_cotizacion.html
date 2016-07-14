@@ -1,0 +1,133 @@
+<div class="av-full-wrapper dark-blue">
+	<div class="compensate-header"></div>
+	<div class="av-section" ng-show="solEnviada == 0">
+		<h1 class="title">Solicitar Cotización</h1>
+		<form ng-submit="solicitarCot()">
+		<div class="row">
+			<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+				<div class="av-form-wrapper white">
+					<p>
+						Solicitar una cotización con Publinet es fácil, simplemente ingrese la información en los campos solicitados y nosotros enviaremos la cotización a todas las empresas que le pueden ayudar, cada empresa le enviará por correo electrónico una cotización
+					</p>
+					<div class="row form-group">
+						<div class="col-xs-12 col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+							 <label>Nombre del Servicio o Producto(*)</label>
+							 <input type="text" ng-model="CotNombre" ng-required="true">
+						 </md-input-container>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-xs-12 col-sm-12">
+							<md-input-container class="md-block">
+								<label>Descripción(*)</label>
+								<textarea ng-model="CotDescripcion" md-maxlength="150" rows="5" md-select-on-focus ng-required="true"></textarea>
+							</md-input-container>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-xs-12 col-sm-6">
+							<md-input-container class="md-block" flex-gt-xs>
+								<label>Categoria(*)</label>
+								<md-select ng-model="CotCategoria" ng-required="true">
+									<md-option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</md-option>
+								</md-select>
+							</md-input-container>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<md-datepicker name="dateField" ng-model="CotDate" md-placeholder="Fecha para Adquirirlo" required ></md-datepicker>
+						</div>
+					</div>
+
+					<h1>Datos de Contácto</h1>
+
+					<div class="row form-group">
+						<div class="col-xs-12 col-sm-6">
+							<md-input-container class="md-block" flex-gt-sm>
+							 <label>Nombres(*)</label>
+							 <input type="text" ng-model="CotNombres" ng-required="true">
+						 </md-input-container>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<md-input-container class="md-block" flex-gt-sm>
+							 <label>Apellidos</label>
+							 <input type="text" ng-model="CotApellidos" >
+						 </md-input-container>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-xs-12 col-sm-6">
+							<md-input-container class="md-block" flex-gt-sm>
+							 <label>Email(*)</label>
+							 <input type="text" ng-model="CotEmail" ng-required="true">
+						 </md-input-container>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<md-input-container class="md-block" flex-gt-sm>
+							 <label>Teléfono o Celular(*)</label>
+							 <input type="text" ng-model="CotTelefono" ng-required="true">
+						 </md-input-container>
+						</div>
+					</div>
+
+					<h1>Datos de Ubicación</h1>
+
+					<div class="row form-group">
+						<div class="col-xs-12 col-sm-6">
+							<md-input-container class="md-block" flex-gt-xs>
+								<label>Ciudad(*)</label>
+								<md-select ng-model="CotCiudad">
+									<md-option ng-repeat="ciudad in ciudades" value="{{ciudad.idCiudad}}">{{ciudad.nombre}}</md-option>
+								</md-select>
+							</md-input-container>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<md-input-container class="md-block" flex-gt-sm>
+							 <label>Municipio</label>
+							 <input type="text" ng-model="CotMunicipio">
+						 </md-input-container>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-xs-12 col-sm-12">
+							<md-input-container class="md-block" flex-gt-sm>
+							 <label>Dirección donde quiere recibir el producto o servicio</label>
+							 <input type="text" ng-model="CotDireccion" >
+						 </md-input-container>
+						</div>
+					</div>
+					<div ng-if="CotError" class="alert alert-danger" role="alert" >{{CotError}}</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 text-center politics">
+				<input type="checkbox" name="politicas"  title="Aceptar Políticas de Privacidad"  ng-model="CotPoliticas">
+				<a href="#/politicas">acepto políticas de privacidad</a>
+			</div>
+			<div class="col-xs-12 col-sm-12 text-center">
+				<button type="submit" class="av-btn-defaul btn-this" title="Enviar Cotización">
+					ENVIAR
+				</button>
+			</div>
+		</div>
+	</form>
+
+	</div>
+
+	<div class="av-section" ng-show="solEnviada == 1">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+				<div class="av-form-wrapper white text-center">
+					<h1>Solicitud Enviada</h1>
+					<p>Hemos enviado tu solicitud de cotización a las <strong>empresas registradas</strong>, muy pornto se comunicarán contigo enviandote cotizaciones de lo que necesitas, simplemente escoge la <strong>mejor opción</strong></p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

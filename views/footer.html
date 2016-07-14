@@ -1,0 +1,15 @@
+<div class="pb-footer">	<div class="av-section">
+		<div class="container-fluid">
+			<div class="col-sm-6 pb-border-right">
+				<div class="pb-logo-wraper box-center">
+					<img src="assets/img/logo-footer.png" alt="">
+				</div>
+			</div>
+
+			<div class="col-sm-6">				<div class="pb-form-subscribe">					<p>						Suscribe tu Email para recibir noticias y promociones					</p>					<form ng-submit="suscribir()">							<input type="text" name="subscribe" placeholder="Email" class="form-control" ng-model="regEmail">							<span class="pull-left"><input type="checkbox" name="politics" ng-model="regPoliticas"> Acepto <a href="#/politicas" target="_blank">Politicas</a></span>							<button type="submit" class="pb-button pb-button--white pull-right" >								Suscribirme							</button>					</form>						<div ng-if="errPoliticas" class="alert alert-danger" role="alert" >{{errPoliticas}}</div>						<div ng-if="errEmail" class="alert alert-danger" role="alert" >{{errEmail}}</div>						<div ng-if="errServ" class="alert alert-danger" role="alert" >{{errServ}}</div>						<div ng-if="success" class="alert alert-float alert-success" role="alert" timeout>{{success}}</div>				</div>			</div>
+		</div>
+
+		<br>
+		<p>			publinet.co | 2016 © copyright | Todos los derechos reservados		</p>
+
+	</div></div>

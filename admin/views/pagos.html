@@ -1,0 +1,50 @@
+<h2 class="header smaller lighter blue text-center">
+	CONFIRMACIONES DE PAGOS
+</h2>
+<div class="row">
+
+	<div class="col-sm-12 col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>Lista de Confirmaciones</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="table-responsive">
+
+								<table datatable class="Tabla table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Ref. Venta</th>
+											<th>Valor</th>
+											<th>Email Comprador</th>
+											<th>Empresa</th>
+											<th>Fecha Pago</th>
+											<th>Mensaje</th>
+										</tr>
+									</thead>
+									<tbody>
+
+													<tr ng-repeat="pago in pagos">
+														<td>{{pago.reference_sale}}</td>
+														<td>{{pago.value}}</td>
+														<td>{{pago.email_buyer}}</td>
+														<td>{{pago.description}}</td>
+														<td>{{pago.datec}}</td>
+														<td>{{pago.response_message_pol}}</td>
+													</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

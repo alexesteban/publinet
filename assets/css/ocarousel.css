@@ -1,0 +1,60 @@
+/***/
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img, .view img {
+  display:inline;
+}
+.ocarousel_window {
+  width: 100%;
+}
+.ocarousel {
+    display: none;
+    padding:20px 0;
+    position:relative;
+}
+.ocarousel span a.prev,.ocarousel span a.next{
+  position:absolute;
+  top:0%;
+}
+
+.ocarousel span a i {
+  line-height: 0.9em;
+}
+
+.ocarousel span a.prev,.ocarousel span a.next {
+  line-height: 0.8em;
+  font-size: 8em;
+  color:#FFF;
+}
+
+.ocarousel span a.prev {
+  left: 0;
+}
+.ocarousel span a.next{
+  right:0;
+}
+.ocarousel span a img{
+    padding-top:5px;
+}
+.ocarousel_window {
+   overflow: hidden;
+   white-space: nowrap;
+   /* default size */
+   width:90%;
+   margin:0 auto;
+}
+.ocarousel_window_slides {
+   position: relative;
+   margin: 0 auto;
+   overflow: hidden;
+   width: 50000px;
+   white-space: nowrap;
+ }
+.ocarousel_window_slides * {
+    display: inline-block;
+    white-space: normal;
+    margin: 0 12px;
+}
+.ocarousel_indicators {
+    width: 100%;
+}
+
+/***/

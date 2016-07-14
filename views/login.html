@@ -1,0 +1,190 @@
+<div class="av-full-wrapper silver">
+	<div class="compensate-header"></div>
+	<div class="av-section">
+		<h1 class="title">Iniciar Sesión</h1>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="av-form-wrapper white">
+					<div class="row">
+						<div class="col-sm-6 form-login border-right">
+							<p>
+								Si eres nuevo en <span class="txt-red">Publinet</span> ingresa a continuación tus datos para completar tu registro
+							</p>
+<md-content layout-padding>
+							<form ng-submit="submitRegistro()">
+								<div ng-if="errPoliticas" class="alert alert-danger" role="alert" >{{errPoliticas}}</div>
+								<div ng-if="errPass" class="alert alert-danger" role="alert" >{{errPass}}</div>
+								<div ng-if="errDatos" class="alert alert-danger" role="alert" >{{errDatos}}</div>
+								<div ng-if="errServ" class="alert alert-danger" role="alert" >{{errServ}}</div>
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<md-input-container class="md-block" flex-gt-sm>
+										 <label>Nombres</label>
+										 <input ng-model="regNombres">
+									 </md-input-container>
+									</div>
+								</div>
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<md-input-container class="md-block" flex-gt-sm>
+										 <label>Apellidos</label>
+										 <input ng-model="regApellidos">
+									 </md-input-container>
+									</div>
+								</div>
+
+
+								<div class="row form-group">
+									<div class="col-sm-6">
+										<md-input-container class="md-block" flex-gt-xs>
+					            <label>Pais de Nacimiento</label>
+											<md-select ng-model="regPais">
+												<md-option ng-repeat="country in countries" value="{{country.country_code}}">{{country.country_name}}</md-option>
+											</md-select>
+					          </md-input-container>
+									</div>
+									<div class="col-sm-6">
+										<!--md-datepicker name="dateField" ng-model="regDate" md-placeholder="Dia Nacimiento"
+											 required ></md-datepicker-->										<datepicker date-format="yyyy-MM-dd" selector="form-control" date-max-limit="1996-">										    <div class="input-group">										        <input class="form-control" ng-model="regDate"  placeholder="Fecha de Nacimiento"/>										        <span class="input-group-addon" style="cursor: pointer">										        <i class="fa fa-lg fa-calendar"></i>										        </span>										    </div>										</datepicker>
+									 <div class="validation-messages" ng-messages="myForm.dateField.$error">
+										 <div ng-message="valid">The entered value is not a date!</div>
+										 <div ng-message="required">This date is required!</div>
+										 <div ng-message="mindate">Date is too early!</div>
+										 <div ng-message="maxdate">Date is too late!</div>
+										 <div ng-message="filtered">Only weekends are allowed!</div>
+									 </div>
+										<!--md-datepicker ng-model="regDate" md-placeholder="Dia Nacimiento">
+					          </md-datepicker-->
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<md-input-container class="md-block" flex-gt-sm>
+								      <!-- Use floating placeholder instead of label -->
+								      <input ng-model="regEmail" type="email" placeholder="Email (*)" ng-required="true">
+								    </md-input-container>
+									</div>
+								</div>
+								<div class="row form-group">
+									<div class="col-sm-6">
+										<md-input-container class="md-block" flex-gt-sm>
+								      <!-- Use floating placeholder instead of label -->
+								      <input ng-model="regPass" type="password" placeholder="Password (*)" ng-required="true">
+								    </md-input-container>
+									</div>
+									<div class="col-sm-6">
+										<md-input-container class="md-block" flex-gt-sm>
+								      <!-- Use floating placeholder instead of label -->
+								      <input ng-model="regPassword" type="password" placeholder="Repetir Password (*)" ng-required="true">
+								    </md-input-container>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12 text-center politics black">
+										<input type="checkbox" name="politicas"  title="Aceptar Políticas de Privacidad"  ng-model="regPoliticas">
+										<a href="#/politicas">acepto políticas de privacidad</a>
+									</div>
+									<div class="col-sm-12 text-center">
+										<button type="submit" class="av-btn-defaul btn-this" title="Registate en Publinet">
+											REGISTRAR
+										</button>
+									</div>
+								</div>
+
+							</form>
+ 						</md-content>
+
+
+						</div>
+						<div class="col-sm-6 form-login" >
+							<p ng-show="!showLostPass">
+								Si ya cuentas con una cuenta en <span class="txt-red">Publinet</span>, ingresa tus datos a continuación
+							</p>
+							<h1 ng-show="showLostPass">Recuperar Password</h1>
+							<p ng-show="showLostPass">
+								Escribe tu Email y te enviaremos instrucciones a tu correo para cambiar tu contraseña
+							</p>
+							<div ng-if="error" class="alert alert-danger" role="alert" timeout>{{error}}</div>
+							<div ng-if="success" class="alert alert-danger" role="alert" timeout>{{success}}</div>
+
+							<form ng-show="!showLostPass" ng-submit="submitLogin()">
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<input type="text" name="email" placeholder="Correo Electrónico" class="form-control"
+										data-toggle="tooltip" data-placement="top" title="Tu Correo Electrónico" ng-model="email">
+									</div>
+								</div>
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<input type="password" name="password" placeholder="Password" class="form-control"
+										data-toggle="tooltip" data-placement="top" title="Tu Contraseña" ng-model="password">
+										<div class="text-right">
+											<a href="" ng-click="changePass()">Olvidé mi password</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<button type="submit"
+												class="av-btn-defaul btn-this"
+												data-toggle="tooltip" data-placement="top" title="Ingresa a tu Cuenta">
+											INGRESAR
+										</button>
+									</div>
+								</div>
+							</form>
+
+
+							<form ng-show="showLostPass && !send" ng-submit="sendLostPass()">
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<md-input-container class="md-block" flex-gt-sm>
+								      <!-- Use floating placeholder instead of label -->
+								      <input ng-model="emailLostPass" type="email" placeholder="Ingresa tu Email" ng-required="true">
+								    </md-input-container>
+										<div class="text-right">
+											<a href="" ng-click="changePass()">Tengo un password</a>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<button type="submit"	class="av-btn-defaul btn-this">
+											ENVIAR
+										</button>
+									</div>
+								</div>
+							</form>
+
+							<h1 ng-if="send" class="text-center">Hemos enviado instrucciones a tu correo para reestablecer tu password</h1>
+							<div ng-if="sended" >
+								<h1 class="text-center">Ya enviamos instrucciones a tu Email</h1>
+								<p>Ya hemos enviado un mensaje al email: <span class="txt-red">{{sended}}</span> con  instrucciones para recuperar tu contraseña, revisa por favor tu bandeja de correo no deseado.</p>
+								<p>Si estas seguro que no recibiste el correo con instrucciones para recuperar tu password, escribenos un email a <span class="txt-red">webmaster@publinet.co</span></p>
+							</div>
+
+<!--
+CUANDO SE REGISTRA, VALIDAR SI EL ID YA EXISTE, SI YA EXISTE LOGUEAR CON ID, SI NO EXISTE, REGISTRARLO
+							<p>También puedes iniciar sesión o registrarte con alguna de tus <span class="txt-red">Redes Sociales</span></p>
+							<div class="av-social-icons text-center">
+								<a href="" ng-click="FBLogin()" class="ico-facebook"><i class="fa fa-facebook"></i></a>
+								<a href="https://www.twitter.com/" target="_blank" class="ico-twitter"><i class="fa fa-twitter"></i></a>
+							</div>
+-->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>

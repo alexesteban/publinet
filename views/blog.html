@@ -1,0 +1,38 @@
+<div class="av-full-wrapper silver">
+	<div class="compensate-header"></div>
+	<div class="av-section">
+	<h1 class="title">Blog - Lugares y planes Recomendados</h1>
+
+	<div class="row">
+
+		<div class="loading" ng-if="!blogs">
+			<i class="fa fa-spinner fa-pulse"></i>
+			<span>Cargando...</span>
+		</div>
+
+		<div ng-if="blogs" class="col-xs-12 col-sm-4" ng-repeat="blog in blogs">
+			<div class="av-material-resume-corp">
+				<div class="av-card">
+					<div class="card-blog">
+						<div class="av-photo">
+							<img ng-src="assets/img/blog/{{blog.imagen}}" />
+						</div>
+						<div class="av-content">
+							<h1>{{blog.titulo}}</h1>
+							<p class="crop-text">
+								{{blog.contenido}}
+							</p>
+						</div>
+					</div>
+
+					<a href="#/blog_detail/{{blog.id}}" class="av-btn-card av-btn-card-plus">
+						<i class="fa fa-plus"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	</div>
+</div>

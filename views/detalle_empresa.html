@@ -1,0 +1,364 @@
+<div ng-if="error">	<div class="av-full-wrapper silver">
+		<div class="compensate-header"></div>
+		<div class="av-section">
+			<!-- Brand -->
+			<div class="av-material-resume-corp">
+				<div class="av-card">
+					<div class="card-search-brands">
+						<h2 class="text-center">
+								La empresa no existe o se encuentra inactiva
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-show="!error">	<div ng-if="plan == 2 || plan == 3 || plan == 4" class="plan-map-wrapper">
+		<div id="map" map class="av-map-microsite"></div>
+		<div class="contacto-microsite">
+			<div class="av-section" style="height:1px">
+				<div class="card-microsite-contact">
+					<h1 class="contacto">Contacto</h1>
+					<div class="content">
+						<div class="av-brand-contact">
+							<span class="av-ico-o">
+								<span class="yellow">
+									<i class="fa fa-phone"></i>
+								</span>
+							</span>
+							<span class="av-contact-txt crop-global-text">{{telefono}} <span ng-if="telefono && celular"></span> {{celular}}</span>
+						</div>
+						<div class="av-brand-contact">
+							<span class="av-ico-o">
+								<span class="yellow">
+									<i class="fa fa-building"></i>
+								</span>
+							</span>
+							<span class="av-contact-txt">{{direccion}}</span>
+						</div>
+						<div class="av-brand-contact">
+							<span class="av-ico-o">
+								<span class="yellow">
+									<i class="fa fa-envelope"></i>
+								</span>
+							</span>
+							<span class="av-contact-txt crop-global-text">{{email}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="av-full-wrapper silver">
+		<div ng-if="plan == 1" class="compensate-header"></div>
+		<div class="av-section">
+			<!-- Brand -->
+			<div class="av-material-resume-corp">
+				<div class="av-card">
+				<div class="card-search-brands">
+					<div class="av-photo photo-detail">
+						<a ng-if="web" href="{{web}}" target="_blank">
+							<img ng-src="assets/img/brands/{{logo}}" alt="{{nombre}}">
+						</a>
+						<img ng-if="!web" ng-src="assets/img/brands/{{logo}}" alt="{{nombre}}">
+					</div>
+					<div class="av-content">
+						<div class="av-content-top">
+							<h1 class="av-brand-title">
+								{{nombre}}
+							</h1>
+							<div class="av-brand-score">
+								<span ng-controller="scoreCtrl">
+									<!--TODO: cantEstrellas está llegando como NAN -->
+									<span ng-init="init(id)" >
+										<input-stars ng-if="isScored" max="5" ng-model="cantEstrellas" readonly="true" ></input-stars>
+										<input-stars ng-if="!isScored" max="5" ng-model="cantEstrellas" ng-disabled="isScored"  ng-click="score(cantEstrellas, id)" ></input-stars>
+									</span>
+								</span>
+								<span class="av-txt-score">{{puntaje}}</span>
+							</div>
+
+							<div class="av-brand-social">
+								<a ng-if="facebook" href="{{facebook}}" target="_blank">
+									<i class="fa fa-facebook"></i>
+								</a>
+								<a ng-if="twitter" href="{{twitter}}" target="_blank">
+									<i class="fa fa-twitter"></i>
+								</a>
+								<a ng-if="instagram" href="{{instagram}}" target="_blank">
+									<i class="fa fa-instagram"></i>
+								</a>
+							</div>
+							<div class="av-brand-category">
+								<i class="fa fa {{icono}}"></i>
+								<span>{{categoria}}</span>
+							</div>
+						</div>
+						<div class="av-content-middle">
+						<span ng-if="plan == 1">
+							<h1 class="contacto">Contacto</h1>
+								<div class="av-brand-contact">
+									<span class="av-ico-o">
+										<span class="yellow">
+											<i class="fa fa-phone"></i>
+										</span>
+									</span>
+									<span class="av-contact-txt">{{telefono}} <span ng-if="telefono && celular"></span> {{celular}}</span>
+								</div>
+								<div class="av-brand-contact">
+									<span class="av-ico-o">
+										<span class="yellow">
+											<i class="fa fa-building"></i>
+										</span>
+									</span>
+									<span class="av-contact-txt">{{direccion}}</span>
+								</div>
+								<div class="av-brand-contact">
+									<span class="av-ico-o">
+										<span class="yellow">
+											<i class="fa fa-envelope"></i>
+										</span>
+									</span>
+									<span class="av-contact-txt">{{email}}</span>
+								</div>
+						</span>
+						<span ng-if="plan == 2 || plan == 3 || plan == 4">
+							<div class="desc-gold" >
+								<p ng-if="desc != ''" ng-repeat="desc in descripcion">
+									{{desc}}.
+								</p>
+								<p ng-if="desc == ''">
+								...
+								</p>
+							</div>
+						</span>
+							<div class="av-add-directory detail" ng-controller="favoriteCtrl">
+								<span ng-init="init(idEmpresa)" >
+									<span ng-if="isFavorite != true && isFavorite != false">
+										cargando...
+									</span>
+									<span ng-if="isFavorite == true || isFavorite == false">
+										<a href="" ng-if="!isFavorite" ng-click="updFavorite(idEmpresa)">
+											<i class="fa fa-heart"></i>
+											<span>Agregar a mi Directorio</span>
+										</a>
+										<a href="" ng-if="isFavorite" ng-click="updFavorite(idEmpresa)">
+											<i class="fa fa-heart light"></i>
+											<span>Quitar de mi Directorio</span>
+										</a>
+									</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="basic-content">
+					<span ng-if="plan==1">
+						<p ng-if="desc != ''" ng-repeat="desc in descripcion">
+							{{desc}}.
+						</p>
+						<p ng-if="!desc">
+							...
+						</p>
+					</span>
+					<div ng-show="plan == 2 || plan == 4" data-example-id="togglable-tabs">
+					  <!-- Nav tabs -->
+					  <ul id="tabs" class="nav nav-tabs" role="tablist" tabs>
+					    <li role="presentation" class="active"><a href="#galeriaPrem" aria-controls="galeria" role="tab" data-toggle="tab">Galeria</a></li>
+					    <li role="presentation"><a href="#comentariosPrem" aria-controls="comentarios" role="tab" data-toggle="tab">Comentarios</a></li>
+					  </ul>
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+					    <div ng-if="plan == 2 || plan == 4"  role="tabpanel" class="tab-pane active" id="galeriaPrem" ng-controller="galleryCtrl">
+								<div class="gallery">
+									<span ng-init="init(idEmpresa)">
+										<div ng-if="gallery" class="image" ng-repeat="gal in gallery">
+											<a href="assets/img/galeria/{{gal.imagen}}" class="big"><img ng-src="assets/img/galeria/{{gal.imagen}}" alt="" title="{{galeria.descripcion}}" /></a>
+										</div>
+										<div ng-if="gallery == ''">
+											<p class="text-center">Aún no hay Fotos</p>
+										</div>
+									</span>
+								</div>
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="comentariosPrem">
+					    	<div class="comments">
+					    		<h1>Comentarios</h1>
+					    			<div class="row">
+					    				<div class="col-sm-12" ng-controller="comentariosCtrl">
+												<form ng-submit="insertComment(idEmpresa)">
+													<textarea ng-model="comentario" class="form-control" placeholder="Escribe un comentario..." maxlength="360"></textarea>
+						    					<div class="text-right">
+														<button type="submit" class="av-btn-defaul btn-this">COMENTAR</button>
+						    					</div>
+												</form>
+												<div class="commentsWrap">
+													<div class="comment" ng-repeat="comment in comments">
+														<div class="row" ng-controller="userByGuidCtrl">
+															<span ng-init="init(comment.id_usuario)">
+																<div class="col-sm-1">
+																	<div class="av-avatar">
+																		<img ng-if="avatar == ''" src="assets/img/avatar/default.png" alt="{{nombres}}">
+																		<img ng-if="avatar != ''" ng-src="{{avatar}}" alt="{{nombres}}">
+																	</div>
+																</div>
+																<div class="col-sm-11">
+																	<h3>{{nombres}}</h3>
+																	<span class="date">{{comment.fecha}}</span>
+																	<p>
+																		{{comment.comentario}}
+																	</p>
+																</div>
+															</span>
+														</div>
+													</div>
+												</div>
+					    				</div>
+					    			</div>
+					    	</div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+				<div class="gold-paln" ng-show="plan == 3">
+					<div class="content-gold">
+						<div class="gold-content">
+						<div data-example-id="togglable-tabs">
+						  <!-- Nav tabs -->
+						  <ul id="tabs" tabs class="nav nav-tabs" role="tablist">
+						    <li role="presentation" class="active"><a href="#galeria" aria-controls="galeria" role="tab" data-toggle="tab" title="Galeria"><i class="fa fa-picture-o"></i></a></li>
+						    <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab" title="Video"><i class="fa fa-play-circle-o"></i></a></li>
+						    <li role="presentation"><a href="#vista360" aria-controls="vista360" role="tab" data-toggle="tab" title="presentación 360°"><i class="fa fa-circle-o-notch"></i></a></li>
+						    <li role="presentation"><a href="#comentarios" aria-controls="comentarios" role="tab" data-toggle="tab" title="Comentarios"><i class="fa fa-commenting"></i></a></li>
+						  </ul>
+						  <!-- Tab panes -->
+						  <div class="tab-content">
+							<!-- GALERIA -->
+							<div role="tabpanel" class="tab-pane active" id="galeria" ng-controller="galleryCtrl">
+								<div class="gallery">
+									<span ng-init="init(idEmpresa)">
+										<div ng-if="gallery" class="image" ng-repeat="galeria in gallery">
+											<a href="assets/img/galeria/{{galeria.imagen}}" class="big"><img ng-src="assets/img/galeria/{{galeria.imagen}}" alt="" title="{{galeria.descripcion}}" /></a>
+										</div>
+									</span>
+								</div>
+							</div>
+						    <!-- /GALERIA -->
+						    <!-- VIDEO -->
+						     <div role="tabpanel" class="tab-pane" id="video" ng-controller="videoCtrl">
+						     	<div class="gold-video">
+						     		<h1>Video</h1>
+										<span ng-init="init(idEmpresa)">
+											<youtube-video video-id="videolink" player-width="'100%'" player-height="'350px'"></youtube-video>
+										</span>
+						     	</div>
+						     </div>
+						    <!-- /VIDEO -->
+
+						    <!-- 360 -->
+						     <div role="tabpanel" class="tab-pane" id="vista360" ng-controller="videoCtrl">
+						     	<div class="gold-view">
+						     		<h1>Presentación 360°</h1>
+										<span ng-init="init(idEmpresa)">
+											<flash style="width:100%; height:400px" ng-src="{{swf}}"></flash>
+										</span>
+						     	</div>
+						     </div>
+						    <!-- /360 -->
+
+						    <!-- COMENTARIOS -->
+						    <div role="tabpanel" class="tab-pane" id="comentarios">
+						    	<div class="comments">
+						    		<h1>Comentarios</h1>
+						    			<div class="row">
+												<div class="col-sm-12" ng-controller="comentariosCtrl">
+													<form ng-submit="insertComment(idEmpresa)">
+														<textarea ng-model="comentario" class="form-control" placeholder="Escribe un comentario..." maxlength="360"></textarea>
+							    					<div class="text-right">
+															<button type="submit" class="av-btn-defaul btn-this">COMENTAR</button>
+							    					</div>
+													</form>
+													<div class="commentsWrap">
+														<div class="comment" ng-repeat="comment in comments">
+															<div class="row" ng-controller="userByGuidCtrl">
+																<span ng-init="init(comment.id_usuario)">
+																	<div class="col-sm-2">
+																		<div class="av-avatar">
+																			<img ng-if="avatar == ''" src="assets/img/avatar/default.png" alt="{{nombres}}">
+																			<img ng-if="avatar != ''" ng-src="{{avatar}}" alt="{{nombres}}">
+																		</div>
+																	</div>
+																	<div class="col-sm-10">
+																		<h3>{{nombres}}</h3>
+																		<span class="date">{{comment.fecha}}</span>
+																		<p>
+																			{{comment.comentario}}
+																		</p>
+																	</div>
+																</span>
+															</div>
+														</div>
+													</div>
+						    				</div>
+						    			</div>
+						    	</div>
+						    </div>
+						    <!-- /COMENTARIOS -->
+
+						  </div>
+
+						</div>					</div>
+					</div>
+					<div class="contact-gold">
+						<h1>
+							<i class="fa fa-envelope"></i>
+							CONTACTO
+						</h1>
+						<div ng-show="ConEnviada == 0">
+							<form ng-submit="enviarContEmp(email)">
+								<div class="form-group">
+									<input type="text" placeholder="Nombres" class="form-control" ng-model="ConNombres"  />
+								</div>
+								<div class="form-group">
+									<input type="text" placeholder="Email" class="form-control" ng-model="ConEmail" />
+								</div>
+								<div class="form-group">
+									<input type="text" placeholder="Teléfono" class="form-control" ng-model="ConTelefono" />
+								</div>
+								<div class="form-group">
+									<input type="text" placeholder="Ciudad" class="form-control" ng-model="ConCiudad" />
+								</div>
+								<div class="form-group">
+									<textarea name="mensaje" placeholder="Mensaje" class="form-control" ng-model="ConMensaje"></textarea>
+								</div>
+								<div ng-if="ConError" class="alert alert-danger" role="alert" >{{ConError}}</div>
+								<div class="row">
+									<div  class="col-xs-12 col-sm-7 text-center" >
+										<div class="politics">
+											<input type="checkbox" name="politicas"  title="Aceptar Políticas de Privacidad"  ng-model="ConPoliticas">
+											<a href="#/politicas" target="_blank">acepto políticas</a>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-5 text-center">
+										<input type="submit" value="ENVIAR" class="av-btn-defaul">
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div ng-show="ConEnviada == 1">
+								<br><br><br>
+								<h1>El mensaje se envió correctamente</h1>
+								<br><br><br>
+						</div>
+					</div>
+				</div>
+
+				</div>			</div>
+			<!-- /Brand -->
+		</div>
+	</div>
+</div>

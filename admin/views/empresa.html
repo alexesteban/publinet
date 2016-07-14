@@ -1,0 +1,361 @@
+<div class="row">
+
+
+	<div class="col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>{{empresa.nombre}}</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+
+					<ul id="tabs" tabs class="nav nav-pills nav-stacked" role="tablist">
+						<li style="display:inline-block" role="presentation"><a href="#logo" aria-controls="logo" role="tab" data-toggle="tab">Logo</a></li>
+						<li style="display:inline-block" role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+						<li style="display:inline-block" role="presentation"><a href="#galeria" aria-controls="galeria" role="tab" data-toggle="tab">Galería</a></li>
+						<li style="display:inline-block" role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab">Video</a></li>
+						<li style="display:inline-block" role="presentation"><a href="#360" aria-controls="360" role="tab" data-toggle="tab">360°</a></li>
+						<li style="display:inline-block" role="presentation"><a href="#tags" aria-controls="360" role="tab" data-toggle="tab">Tags</a></li>
+						<!--li role="presentation"><a href="#comentarios" aria-controls="comentarios" role="tab" data-toggle="tab">Comentarios</a></li-->
+					</ul>
+
+					<div class="tab-content">
+
+						<div role="tabpanel" class="tab-pane" id="logo">
+							<h1>Logo de la Empresa</h1>
+							<form ng-submit="updLogo()">
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<div class="changeAvatar">
+											<input type="file" id="fileInput" />
+											<div class="wrapper-change-avatar">
+												<span>Click para cambiar el Logo</span>
+												<img src="../assets/img/changelogo.png" alt="">
+											</div>
+										</div>
+
+										<div class="cropArea"	>
+											<img-crop
+												image="myImage"
+												result-image="myCroppedImage"
+												area-type="square"
+												area-min-size="350"
+												result-image-size="350"
+												result-image-quality="1.0"></img-crop>
+										</div>
+									</div>
+								</div>
+
+								<hr>
+
+									<div class="row">
+										<div class="col-sm-12 text-center">
+											<button type="submit" class="btn btn-success">ACTUALZAR</button>
+										</div>
+									</div>
+
+							</form>
+
+						</div>
+						<div role="tabpanel" class="tab-pane active" id="general">
+							<h1>Información General</h1>
+
+							<form ng-submit="updGeneral()">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group">
+											<span>Descripcion</span>
+											<textarea class="form-control" ng-model="empresa.descripcion"></textarea>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Teléfono</span>
+											<input class="form-control" type="text" ng-model="empresa.telefono" value="{{empresa.telefono}}" >
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Celular</span>
+											<input class="form-control" type="text" ng-model="empresa.celular" value="{{empresa.celular}}" >
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Email Empresa</span>
+											<input class="form-control" type="text" ng-model="empresa.email" value="{{empresa.email}}" >
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Link Facebook</span>
+											<input class="form-control" type="text" ng-model="empresa.facebook" value="{{empresa.facebook}}" >
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Link Twitter</span>
+											<input class="form-control" type="text" ng-model="empresa.twitter" value="{{empresa.twitter}}" >
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Link Instagram</span>
+											<input class="form-control" type="text" ng-model="empresa.instagam" value="{{empresa.instagam}}" >
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Dirección</span>
+											<input class="form-control" type="text" ng-model="empresa.direccion" value="{{empresa.direccion}}" >
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span>Plan</span>
+											<select class="form-control" ng-model="empresa.plan">
+												<option value="1">Básico</option>
+												<option value="2">Premium</option>
+												<option value="3">Gold</option>
+												<option value="4">Cortesia</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<span>Mapa</span>
+										<input type="hidden" ng-model="latitud">
+										 <input type="hidden" ng-model="longitud">
+										<p>Haga click en el mapa para definir la localización de su empresa</p>
+										<div id="maped" maped="updCoords(latitud,longitud)" class="av-map-search" ></div>
+									</div>
+								</div>
+
+								<div ng-if="error" class="alert alert-danger" role="alert">{{error}}</div>
+								<div ng-if="success" class="alert alert-float alert-success" role="alert" timeout>{{success}}</div>
+
+								<div class="row text-center">
+									<button type="submit" class="btn btn-success">
+										ACTUALIZAR
+									</button>
+								</div>
+
+							</form>
+
+						</div>
+						<div role="tabpanel" class="tab-pane" id="galeria">
+							<h1>Galeria</h1>
+
+							<!-- Galeria -->
+							<div ng-show="empresa.plan == 2 || empresa.plan == 3">
+
+								<div ng-controller="galleryCtrl">
+
+									<div ng-if="gallery.length >= 20 && plan == 2">
+										Has completado el cupo de imagenes en tu plan Premium</a>
+									</div>
+
+									<div ng-if="gallery.length >= 40 && plan == 3">
+										Has completado el cupo de imagenes en tu plan GOLD
+									</div>
+
+									<div ng-show="(gallery.length < 20 && empresa.plan == 2) || (gallery.length < 40 && empresa.plan == 3)" class="row form-group">
+										<div class="col-sm-12">
+											<form ng-submit="updImagen(empresa.id)">
+												<div class="row form-group">
+													<div class="col-sm-12">
+
+														<div class="changeAvatar" >
+															<input type="file" id="imgInput" />
+															<div class="wrapper-change-avatar">
+																<span>Subir imagen</span>
+																<img src="../assets/img/changelogo.png" alt="">
+															</div>
+														</div>
+
+														<div class="row">
+															<div class="col-sm-12">
+																<label>Descripción</label>
+																<input type="text" ng-model="descImg" class="form-control">
+															</div>
+														</div>
+
+														<div class="cropArea" ng-show="isImg">
+															<img-crop
+																image="myGal"
+																result-image="myCroppedGal"
+																area-type="square"
+																area-min-size="400"
+																result-image-size="400"
+																result-image-quality="1.0"></img-crop>
+														</div>
+													</div>
+												</div>
+
+												<hr>
+
+													<div class="row">
+														<div class="col-sm-12 text-center">
+															<button type="submit" class="btn btn-success">SUBIR</button>
+														</div>
+													</div>
+
+											</form>
+
+										</div>
+									</div>
+
+									<div class="gallery" >
+
+										<span ng-init="init()">
+											<div ng-if="gallery" class="image" ng-repeat="galeria in gallery">
+												<a class="big"><img ng-src="../assets/img/galeria/{{galeria.imagen}}" alt="" title="{{galeria.descripcion}}" /></a>
+												<a href="" ng-click="deleteImg($event,galeria.id,idEmpresa,galeria.imagen)" class="Delete">Borrar</a>
+											</div>
+										</span>
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- End Galeria -->
+
+						</div>
+						<div role="tabpanel" class="tab-pane" id="video">
+							<h1>Video</h1>
+							<div ng-if="errVideo" class="alert alert-danger" role="alert">{{errVideo}}</div>
+							<div ng-if="sucVideo" class="alert alert-float alert-success" role="alert" timeout>{{sucVideo}}</div>
+							<div ng-if="empresa.plan != 3">
+								Cambia a plan Gold para agregar un video
+							</div>
+
+							<!-- TODO: Cambiar los ng-show por ng-if, cuidado con los dos caminos del scope -->
+							<div ng-show="empresa.plan == 3">
+								<form ng-submit="updVideo()">
+								<div class="row form-group">
+									<div class="col-sm-12">
+										<label>Link del Video</label>
+										<input type="text" ng-model="video" class="form-control">
+									</div>
+								</div>
+
+								<hr/>
+
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<button type="submit" class="btn btn-success">
+											ACTUALZAR
+										</button>
+									</div>
+								</div>
+								</form>
+							</div>
+
+						</div>
+						<div role="tabpanel" class="tab-pane" id="360">
+							<h1>Vista 360</h1>
+
+							<div ng-if="errPanorama" class="alert alert-danger" role="alert">{{errPanorama}}</div>
+							<div ng-if="sucPanorama" class="alert alert-float alert-success" role="alert" timeout>{{sucPanorama}}</div>
+
+							<!-- 360 -->
+							<div ng-if="empresa.plan != 3">
+								Cambia a Gold
+							</div>
+							<div ng-show="empresa.plan == 3">
+
+								<form ng-submit="updPanorama()">
+
+									<div class="row form-group">
+										<div class="col-sm-12">
+											<span>Sube sólamente archivos .SWF</span>
+											<input type="file" fileread="panorama" class="form-control"  />
+										</div>
+									</div>
+
+									<hr/>
+
+									<div class="row">
+										<div class="col-sm-12 text-center">
+											<button type="submit" class="btn btn-success">
+												ACTUALZAR
+											</button>
+										</div>
+									</div>
+
+								</form>
+
+							</div>
+							<!-- Fin 360 -->
+
+						</div>
+
+						<div role="tabpanel" class="tab-pane" id="tags">
+							<h1>Tags</h1>
+
+							<div ng-if="errTags" class="alert alert-danger" role="alert">{{errTags}}</div>
+							<div ng-if="sucTags" class="alert alert-float alert-success" role="alert" timeout>{{sucTags}}</div>
+
+
+								<form ng-submit="updTags()">
+
+									<div class="row">
+										<div class="col-sm-12">
+											<span>Escriba las palabras clave con las cuales las personas van a encontrar su empresa</span>
+											<md-content class="md-padding autocomplete" layout="column" ng-controller="tagsCtrl">
+												<md-chips ng-model="etiquetas" md-autocomplete-snap>
+													<md-autocomplete
+															 md-search-text="searchText"
+															 md-items="item in queryGroups(searchText)"
+															 md-item-text="item"
+															 md-autoselect="true"
+															 md-select-on-match="true"
+															 md-no-cache="true"
+															 md-require-match="true"
+															 placeholder="Find a group..">
+															<span md-highlight-text="searchText">{{item}}</span>
+													</md-autocomplete>
+													<md-chip-template>
+															<span>{{$chip}}</span>
+													</md-chip-template>
+												</md-chips>
+											</md-content>
+										</div>
+									</div>
+
+									<hr/>
+									<div class="row">
+										<div class="col-sm-12 text-center">
+											<button type="submit" class="btn btn-success">
+												ACTUALZAR
+											</button>
+										</div>
+									</div>
+
+								</form>
+							</div>
+
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

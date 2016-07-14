@@ -1,0 +1,64 @@
+<h2 class="header smaller lighter blue text-center">
+	Tags
+</h2>
+
+<div class="row">
+	<div class="col-sm-4 col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>Agregar un Tag</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+					<form ng-submit="addTag()">
+						<div class="row">
+							<div class="col-sm-12 col-xs-12">
+								<label>Nombre del Tag</label>
+								<input type="text" ng-model="tagName" class="form-control" />
+							</div>
+						</div>
+
+						<br>
+						<div class="text-center">
+							<input type="submit" value="Crear Tag" class="btn btn-sm btn-success" />
+						</div>
+					</form>
+					<div ng-if="error" class="alert alert-danger" role="alert">{{error}}</div>
+					<div ng-if="success" class="alert alert-float alert-success" role="alert" timeout>{{success}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-8 col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>Lista de Tags</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+					<div class="table-responsive">
+						<table datatable class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>
+										Nombre del Tag
+									</th>
+									<th>
+										Eliminar
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+                <tr ng-repeat="tag in admTags">
+                  <td>{{tag.tag}}</td>
+                  <td class="text-center"><a href="" ng-click="delTag($event,tag.id)">X</a></td>
+                </tr>
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

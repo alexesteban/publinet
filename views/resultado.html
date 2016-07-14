@@ -1,0 +1,175 @@
+<div id="map" map class="av-map-search" ></div>
+<!-- Search --><div class="pb-inner-search">
+	<div class="pb-inner-search__wrapper">
+		<div  layout="column" ng-cloak>
+			<form ng-controller="ACCategoriasCtrl as ctrl">
+				<div class="pb-wrapper-inputs" ng-controller="tagsCtrl">
+					<div class="pb-search-input" >
+						<md-autocomplete flex required
+								md-input-name="223232"
+								md-input-minlength="2"
+								md-input-maxlength="18"
+								md-no-cache="ctrl.noCacheCA"
+								md-search-text="searchText"
+								md-items="item in queryGroups(searchText)"
+								md-selected-item="item"
+								md-item-text="item"
+								md-floating-label="¿Qué Buscas?">
+							<md-item-template>
+								<span md-highlight-text="searchText">{{item}}</span>
+							</md-item-template>
+						</md-autocomplete>
+					</div>
+					<div class="pb-search-input" >
+						<md-autocomplete flex required
+								md-input-name="idCiudad"
+								md-input-minlength="2"
+								md-input-maxlength="18"
+								md-no-cache="ctrl.noCacheCI"
+								md-selected-item="ctrl.selectedItemCI"
+								md-search-text="ctrl.searchTextCI"
+								md-items="itemCI in ctrl.querySearchCI(ctrl.searchTextCI)"
+								md-item-text="itemCI.nombre"
+								md-floating-label="¿En cuál Ciudad?">
+							<md-item-template>
+								<span md-highlight-text="ctrl.searchTextCI">{{itemCI.nombre}}</span>
+							</md-item-template>
+						</md-autocomplete>
+					</div>
+					<div class="pb-search-button">
+						<a class="pb-button pb-button--white" title="Click para buscar" href="#/resultado/{{searchText || 0}}/{{ctrl.selectedItemCI.idCiudad || 0}}">
+							BUSCAR
+						</a>
+					</div>
+			</div>
+			</form>
+		<!--p>
+
+			¿No encontraste lo que buscabas? intenta la <a href="" title="Buscar con más opciones" data-toggle="modal" data-target="#AdvanceSearch">Busqueda Avanzada</a>
+		</p-->
+		</div>	</div>
+</div>
+<!-- /Search -->
+
+
+
+<div class="av-section">
+	<h1 class="av-big-title">{{textResultado}}</h1>
+
+	<div class="loading" ng-if="!empresas">
+		<i class="fa fa-spinner fa-pulse"></i>
+		<span>Cargando...</span>
+	</div>
+
+	<div ng-if="empresas">
+
+	<div ng-if="empresas == ''">
+		No se encontraron resultados
+	</div>
+
+	<!-- Brand -->
+	<div class="av-material-resume-corp" ng-if="empresas != ''" ng-repeat="empresa in empresas | limitTo: paginationLimit()">
+		<div class="av-card">
+		<div class="card-search-brands">
+			<div class="av-photo">
+				<img ng-src="assets/img/brands/{{empresa.logo}}" alt="{{empresa.nombre}}">
+			</div>
+			<div class="av-content">
+				<div class="av-content-top">
+					<h1 class="av-brand-title crop-global-text">
+						{{empresa.nombre}}
+					</h1>					<div class="av-brand-score">						<span ng-controller="scoreCtrl">
+							<span ng-init="init(empresa.id)" >
+								<input-stars ng-if="isScored" max="5" ng-model="cantEstrellas" readonly="true" ></input-stars>
+								<input-stars ng-if="!isScored" max="5" ng-model="cantEstrellas" ng-disabled="isScored"  ng-click="score(cantEstrellas, empresa.id)" ></input-stars>
+							</span>
+							<span class="av-txt-score">{{puntaje}}</span>
+						</span>
+					</div>
+
+					<div class="av-brand-social">
+						<a ng-if="empresa.facebook" href="{{empresa.facebook}}" target="_blank">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a ng-if="empresa.twitter" href="{{empresa.twitter}}" target="_blank">
+							<i class="fa fa-twitter"></i>
+						</a>
+						<a ng-if="empresa.instagram" href="{{empresa.instagram}}" target="_blank">
+							<i class="fa fa-instagram"></i>
+						</a>
+					</div>
+					<div class="av-brand-category">
+						<i class="fa fa {{empresa.icono}}"></i>
+						<span>{{empresa.categoria}}</span>
+					</div>
+				</div>
+				<div class="av-content-middle">
+					<div class="av-brand-contact">
+						<span class="av-ico-o">
+							<span class="yellow">
+								<i class="fa fa-phone"></i>
+							</span>
+						</span>
+						<span class="av-contact-txt">{{empresa.telefono}} <span ng-if="empresa.telefono && empresa.celular">-</span> {{empresa.celular}}</span>
+					</div>
+					<div class="av-brand-contact">
+						<span class="av-ico-o">
+							<span class="yellow">
+								<i class="fa fa-building"></i>
+							</span>
+						</span>
+						<span class="av-contact-txt">{{empresa.direccion}}</span>
+					</div>
+					<div class="av-brand-contact">
+						<span class="av-ico-o">
+							<span class="yellow">
+								<i class="fa fa-envelope"></i>
+							</span>
+						</span>
+						<span class="av-contact-txt">{{empresa.email}}</span>
+					</div>
+					<div class="av-add-directory" ng-controller="favoriteCtrl">
+
+						<span ng-init="init(empresa.id)" >
+							<span ng-if="isFavorite != true && isFavorite != false">
+								cargando...
+							</span>
+							<span ng-if="isFavorite == true || isFavorite == false">
+
+								<a href="" ng-if="!isFavorite" ng-click="updFavorite(empresa.id)">
+									<i class="fa fa-heart"></i>
+									<span>Agregar a mi Directorio</span>
+								</a>
+
+								<a href="" ng-if="isFavorite" ng-click="updFavorite(empresa.id)">
+									<i class="fa fa-heart light"></i>
+									<span>Quitar de mi Directorio</span>
+								</a>
+							</span>
+						</span>
+
+					</div>
+				</div>
+				<div class="av-content-bottom">
+					<p class="av-brand-text">
+						{{empresa.descripcion}}
+					</p>
+				</div>
+			</div>
+		</div>
+			<a ng-if="empresa.plan != 1" href="#/detalle_empresa/{{empresa.id}}" class="av-btn-card av-btn-card-plus">
+				<i class="fa fa-plus"></i>
+			</a>
+		</div>
+	</div>
+	<!-- /Brand -->
+
+
+	<div class="text-center">
+		<a href="" class="av-btn-defaul av-btn-blue" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()"
+		data-toggle="tooltip" data-placement="top" title="Registrar Empresa">VER MÁS</a>
+	</div>
+
+</div>
+
+</div>

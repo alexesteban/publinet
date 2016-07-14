@@ -1,0 +1,237 @@
+<div class="av-full-wrapper silver">	<div class="compensate-header"></div>
+	<div class="av-section">
+		<h1 class="title">Publica tu Empresa</h1>
+		<div class="row header-RE">
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+				<!-- Si NO está Autenticado -->				<div class="row" ng-if="!isLogued">
+					<div class="col-xs-12 col-sm-8">
+						<h2 class="av-subtitle text-center" style="padding: .5em 0;">¿Ya tienes una cuenta en Publinet?</h2>
+					</div>
+					<div class="col-xs-12 col-sm-4 text-center">
+						<a href="#/login" class="pb-button pb-button--standard"
+						data-toggle="tooltip" data-placement="top" title="Ingresa o Regístrate">
+							Ingresa
+						</a>
+					</div>
+				</div>
+
+				<!-- /Si NO está Autenticado -->
+				<!-- Si está Autenticado -->				<div class="row" ng-if="isLogued">
+					<div class="col-xs-12 col-sm-12 user-logued" ng-controller="userByGuidCtrl">
+						<span ng-init="init(guid)">
+							<div class="av-avatar">
+								<img ng-if="avatar == ''" src="assets/img/avatar/default.png" alt="">
+								<img ng-if="avatar != ''" ng-src="{{avatar}}" />
+							</div>
+							<h2 class="av-subtitle user-name">Hola, {{nombres}}</h2>
+						</span>
+					</div>
+				</div>
+				<!-- /Si está autenticado -->
+			</div>
+
+		</div>
+		<div class="row">
+			<!--div class="col-sm-6">
+
+				<div class="row">					<div class="col-sm-12">
+						<div class="av-form-wrapper white">
+							<h1>Datos personales del Usuario</h1>
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<input type="text" placeholder="Nombres" class="form-control"
+								data-toggle="tooltip" data-placement="top" title="Nombres">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-12">
+								<input type="text" placeholder="Apellidos" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="Apellidos">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-4">
+									<select name="plan" id="" class="form-control">
+										<option value="">Tipo I.D.</option>
+									</select>
+								</div>
+								<div class="col-sm-8">
+									<input type="text" placeholder="No. de Identificación" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="No. de Identificación">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-6">
+									<input type="text" placeholder="Fecha de Nacimiento" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="Fecha de Nacimiento">
+								</div>
+								<div class="col-sm-6">
+									<select name="pais" id="" class="form-control">
+										<option value="">País de Nacimiento</option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-6">
+									<select name="genero" id="" class="form-control">
+										<option value="">Genero</option>
+									</select>
+								</div>
+								<div class="col-sm-6">
+									<input type="text" placeholder="Cargo o Función" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="Cargo o Función">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<input type="text" placeholder="Teléfono" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="Teléfono">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<input type="text" placeholder="Email" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="Email">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-6">
+									<input type="text" placeholder="Password" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="Password">
+								</div>
+								<div class="col-sm-6">
+									<input type="text" placeholder="Repetir Password" class="form-control"
+									data-toggle="tooltip" data-placement="top" title="Repetir Password">
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			</div-->
+			</div>
+
+			<div ng-if="!isLogued">
+				<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+					<div class="av-form-wrapper white">
+						<h1>Inicia Sesión</h1>
+						<p>Para poder registrar una empresa, es necesario que te registres primero en publinet.co, es totalmente gratis</p>
+						<div class="text-center">
+							<a href="#/login" class="pb-button pb-button--standard" >
+								Regístrate
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		<form ng-submit="EmpRegistro()">			<div class="row" ng-show="isLogued">
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+				<div class="row">
+					<div class="col-sm-12">
+					<div class="av-form-wrapper white">
+							<h1>Datos de la Empresa</h1>
+							<div class="row form-group">
+								<div class="col-xs-12 col-sm-12">
+									<md-input-container class="md-block" flex-gt-sm>
+									 <label>Nombre o Razón Social de la Empresa(*)</label>
+									 <input ng-model="EmpNombre">
+								 </md-input-container>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-xs-12 col-sm-12">
+									<md-input-container class="md-block" flex-gt-sm>
+									 <label>Nit</label>
+									 <input ng-model="EmpNit">
+								 </md-input-container>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-xs-12 col-sm-6">
+									<md-input-container class="md-block" flex-gt-xs>
+										<label>Ciudad(*)</label>
+										<md-select ng-model="EmpCiudad">
+											<md-option ng-repeat="ciudad in ciudades" value="{{ciudad.idCiudad}}">{{ciudad.nombre}}</md-option>
+										</md-select>
+									</md-input-container>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<md-input-container class="md-block" flex-gt-sm>
+									 <label>Dirección Of. Principal</label>
+									 <input ng-model="EmpDireccion">
+								 </md-input-container>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-xs-12 col-sm-6">
+									<md-input-container class="md-block" flex-gt-sm>
+									 <label>Teléfono(*)</label>
+									 <input ng-model="EmpTelefono">
+								 </md-input-container>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<md-input-container class="md-block" flex-gt-sm>
+									 <label>Celular</label>
+									 <input ng-model="EmpCelular">
+								 </md-input-container>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-xs-12 col-sm-12">
+									<md-input-container class="md-block" flex-gt-sm>
+									 <label>Email de la Empresa(*)</label>
+									 <input ng-model="EmpEmail">
+								 </md-input-container>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-xs-12 col-sm-12">
+									<md-input-container class="md-block" flex-gt-sm>
+									 <label>Página Web de la Empresa</label>
+									 <input ng-model="EmpPagina">
+								 </md-input-container>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-xs-12 col-sm-6">
+									<md-input-container class="md-block" flex-gt-xs>
+										<label>Categoria(*)</label>
+										<md-select ng-model="EmpCategoria">
+											<md-option ng-repeat="categoria in categorias" value="{{categoria.id}}">{{categoria.nombre}}</md-option>
+										</md-select>
+									</md-input-container>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<md-input-container class="md-block" flex-gt-xs>
+										<label>Plan(*)</label>
+										<md-select ng-model="EmpPlan">
+											<md-option value="1">Básico</md-option>
+											<md-option value="2">Premium</md-option>
+											<md-option value="3">Gold</md-option>
+											<md-option value="4">Cortesía</md-option>
+										</md-select>
+									</md-input-container>
+								</div>
+						</div>
+							<div ng-if="EmpError" class="alert alert-danger" role="alert" >{{EmpError}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="isLogued">
+			<div class="col-xs-12 col-sm-12 text-center politics">
+				<input type="checkbox" name="politicas"  title="Aceptar Políticas de Privacidad"  ng-model="EmpPoliticas">
+				<a href="#/politicas">acepto políticas de privacidad</a>
+			</div>
+			<div class="col-xs-12 col-sm-12 text-center">
+				<button type="submit" class="av-btn-defaul btn-this" title="Registrar Empresa">
+					REGISTRAR
+				</button>
+			</div>
+		</div>
+	</form>
+
+	</div></div>

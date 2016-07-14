@@ -1,0 +1,86 @@
+<div class="av-full-wrapper silver">
+	<div class="compensate-header"></div>
+	<div class="av-section">
+	<h1 class="title">Blog - Lugares y planes Recomendados</h1>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<a href="#/blog" class="simple-link">VER TODOS</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="loading" ng-if="!blog_prin_contenido">
+			<i class="fa fa-spinner fa-pulse"></i>
+			<span>Cargando...</span>
+		</div>
+
+		<div class="col-xs-12 col-sm-8" ng-if="blog_prin_contenido">
+			<div class="av-material-resume-corp">
+				<div class="av-card">
+					<div class="card-blog detail">
+						<div class="av-photo">
+							<img ng-src="assets/img/blog/{{blog_prin_imagen}}" alt="" />
+						</div>
+						<div class="av-content">
+							<h1>{{blog_prin_titulo}}</h1>
+
+							<p ng-repeat="parrafo in blog_prin_contenido">
+								{{parrafo}}.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="col-xs-12 col-sm-4">
+			<div class="av-material-resume-corp" ng-if="blog_prev_id">
+				<div class="av-card">
+					<div class="card-blog">
+						<div class="av-photo">
+							<img ng-src="assets/img/blog/{{blog_prev_img}}" />
+						</div>
+						<div class="av-content">
+							<h1>{{blog_prev_tit}}</h1>
+							<p class="crop-text">
+								{{blog_prev_con}}
+							</p>
+						</div>
+					</div>
+
+					<a href="#/blog_detail/{{blog_prev_id}}" class="av-btn-card av-btn-card-plus">
+						<i class="fa fa-plus"></i>
+					</a>
+				</div>
+			</div>
+
+			<div class="av-material-resume-corp" ng-if="blog_next_id">
+				<div class="av-card">
+					<div class="card-blog">
+						<div class="av-photo">
+							<img ng-src="assets/img/blog/{{blog_next_img}}" />
+						</div>
+						<div class="av-content">
+							<h1>{{blog_next_tit}}</h1>
+							<p class="crop-text">
+								{{blog_next_con}}
+							</p>
+						</div>
+					</div>
+
+					<a href="#/blog_detail/{{blog_next_id}}" class="av-btn-card av-btn-card-plus">
+						<i class="fa fa-plus"></i>
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	</div>
+</div>

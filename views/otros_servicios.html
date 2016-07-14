@@ -1,0 +1,166 @@
+<div class="av-full-wrapper blue-aqua">
+	<div class="compensate-header"></div>
+	<div class="av-section">
+		<h1 class="title">Otros Servicios</h1>
+
+		<br><br><br>
+
+		<div class="row resp-services">
+			<div class="col-xs-12 col-sm-6">
+				<div class="av-services">
+					<h1>Todo en Artículos Publicitarios</h1>
+					<p>
+						Elaboramos toda clase de articulos publicitarios corporativos, resaltamos su marca dejando recordación e identidad con artículos de        excelente calidad.
+					</p>
+					<div class="text-left">
+						<a href="" class="av-btn-defaul btn-this"
+						data-toggle="modal" data-target="#contactanos">CONTÁCTANOS</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<img src="assets/img/articulos_publicitarios.png" alt="">
+			</div>
+		</div>
+	</div>
+<br>
+</div>
+
+
+<div class="av-full-wrapper yellow-light">
+<br>
+	<div class="av-section">
+		<div class="row resp-services">
+			<div class="col-xs-12 col-sm-6">
+				<div class="av-services">
+					<h1>Diseño de Páginas Web</h1>
+					<p>
+						Creamos tu propio sitio web a medida según tu necesidad adaptable a cualquier dispositivo móvil
+					</p>
+					<div class="text-left">
+						<a href="" class="av-btn-defaul btn-this"
+						data-toggle="modal" data-target="#contactanos">CONTÁCTANOS</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<img src="assets/img/paginas_web.png" alt="">
+			</div>
+		</div>
+	</div>
+<br>
+</div>
+
+
+<div class="av-full-wrapper blue-aqua-dark">
+<br>
+	<div class="av-section resp-services">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<div class="av-services">
+					<h1>Marketing Digital</h1>
+					<p>
+						Diseño e implementación de estrategias para publicidad en Google Adwords y Facebook
+					</p>
+					<div class="text-left">
+						<a href="" class="av-btn-defaul btn-this"
+						data-toggle="modal" data-target="#contactanos">CONTÁCTANOS</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<img src="assets/img/marketing.png" alt="">
+			</div>
+		</div>
+	</div>
+<br>
+</div>
+
+
+<!-- Modal -->
+	<div class="modal fade" id="contactanos" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h4 class="modal-title" id="myModalLabel">Contáctanos</h4>
+	            </div>
+	            <div class="modal-body">
+								<div ng-show="Enviado == 0 ">
+									<form ng-submit="enviarContacto()">
+		            		<div class="row">
+		            			<div class="col-sm-6">
+		            				<div class="form-group">
+													<md-input-container class="md-block" flex-gt-sm>
+													 <label>Nombres</label>
+													 <input type="text" ng-required="true" ng-model="Nombres">
+												 </md-input-container>
+		            				</div>
+		            			</div>
+		            			<div class="col-sm-6">
+		            				<div class="form-group">
+													<md-input-container class="md-block" flex-gt-sm>
+													 <label>Apellidos</label>
+													 <input type="text" ng-model="Apellidos">
+												 </md-input-container>
+		            				</div>
+		            			</div>
+		            		</div>
+		            		<div class="row">
+		            			<div class="col-sm-6">
+		            				<div class="form-group">
+													<md-input-container class="md-block" flex-gt-sm>
+													 <label>Email</label>
+													 <input type="text" ng-required="true" ng-model="Email">
+												 </md-input-container>
+		            				</div>
+		            			</div>
+		            			<div class="col-sm-6">
+		            				<div class="form-group">
+													<md-input-container class="md-block" flex-gt-sm>
+													 <label>Teléfono</label>
+													 <input type="text" ng-required="true" ng-model="Telefono">
+												 </md-input-container>
+		            				</div>
+		            			</div>
+		            		</div>
+		            		<div class="row">
+		            			<div class="col-sm-12">
+												<md-input-container class="md-block">
+													<label>Mensaje</label>
+													<textarea ng-model="Mensaje" md-maxlength="350" rows="5" md-select-on-focus ng-required="true"></textarea>
+												</md-input-container>
+		            			</div>
+		            		</div>
+										<div ng-if="Error" class="alert alert-danger" role="alert" >{{Error}}</div>
+		            		<div class="row">
+		            		<br>
+		            			<div class="col-sm-12 text-center politics black">
+											<input type="checkbox" name="politicas"  title="Aceptar Políticas de Privacidad"  ng-model="Politicas">
+											<a href="">acepto políticas de privacidad</a>
+											</div>
+		            	<div class="col-sm-12">
+		            		<div class="text-center">
+		            			<button type="submit" class="av-btn av-btn-blue">
+		            				<i class="fa fa-send"></i>
+		            				ENVIAR
+		            			</button>
+		            		</div>
+		            	</div>
+		            </div>
+		          </form>
+								</div>
+
+								<div ng-show="Enviado == 1 ">
+									<h1 class="text-center">Mensaje Enviado</h1>
+									<p>Gracias por comunicarte con nosotros, muy pronto nos pondremos en contácto!</p>
+								</div>
+
+	        </div>
+	        <div class="modal-footer">
+	        	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	        </div>
+	    </div>
+	  </div>
+	</div>
+<!-- Fin -->

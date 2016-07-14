@@ -1,0 +1,88 @@
+<div ng-class="{'silver':plan==1,'silver':plan==2,'silver':plan==3,'silver':plan==4}" class="av-full-wrapper">
+  <div class="compensate-header"></div>
+
+	<div class="av-section">
+    <h1 ng-if="plan == 1" class="title">Plan Cheap</h1>
+    <h1 ng-if="plan == 2" class="title">Plan Platinium</h1>
+    <h1 ng-if="plan == 3" class="title">Plan Deluxe</h1>
+		<h1 ng-if="plan == 4" class="title">Plan de Prueba</h1>
+	</div>
+
+
+	<div class="av-section">
+		<div class="row">
+      <div class="col-xs-12 col-sm-6" >
+        <div style="text-align:center">
+          <img ng-if="plan==1" src="assets/img/welcome_basico.png" alt="">
+          <img ng-if="plan==2" src="assets/img/welcome_premium.png" alt="">
+          <img ng-if="plan==3" src="assets/img/welcome_gold.png" alt="">
+          <img ng-if="plan==4" src="assets/img/welcome_cortesia.png" alt="">
+        </div>
+			</div>
+
+			<div class="col-xs-12 col-sm-6">
+				<div class="av-services" ng-if="plan==4">
+					<h1>Has activado tu plan de Prueba</h1>
+					<p>            Desde hoy, tienes <strong>31 días</strong> para disfrutar la cuenta que te regala <strong>Publinet</strong> equivalente a platinium, puedes empezar a administrar tu empresa aqui:
+          </p>          <div>            <a href="#/mis_empresas" class="pb-button pb-button--standard">Mis Empresas</a>          </div>
+				</div>
+
+        <div class="av-services">
+					<h1 ng-if="plan!=4">${{precio}} <small>Anual</small></h1>
+					<p ng-if="plan!=4">
+           Has Registrado tu empresa en plan <span ng-if="plan==1">Cheap</span><span ng-if="plan==2">Platinium</span> <span ng-if="plan==2">Deluxe</span>, en este momento tu empresa se encuentra inactiva, para activarla procede a realizar el pago:
+          </p>
+          <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway" accept-charset="UTF-8">
+          <input name="merchantId" type="hidden"  value="{{merchantId}}" >
+          <input name="ApiKey" type="hidden"  value="{{ApiKey}}" >
+          <input name="referenceCode" type="hidden"  value="{{referenceCode}}" >
+          <input name="accountId" type="hidden"  value="{{accountId}}" >
+          <input name="description" type="hidden"  value="{{guidEmpresa}}" >
+          <input name="amount" type="hidden" value="{{precio}}" >
+          <input name="tax" type="hidden"  value="0" >
+          <input name="taxReturnBase" type="hidden"  value="0" >
+          <input name="currency" type="hidden"  value="COP" >
+          <input name="signature" type="hidden"  value="{{md5sign}}" >
+          <input name="test" type="hidden"  value="0" >
+          <input name="buyerEmail" type="hidden"  value="{{buyerEmail}}" >
+          <input name="responseUrl"    type="hidden"  value="http://publinet.co/servicios/response.php" >
+          <input name="confirmationUrl"    type="hidden"  value="http://publinet.co/servicios/confirmation.php">
+          <button ng-if="plan!=4" class="pb-button pb-button--standard">
+            REALIZAR PAGO
+          </button>
+
+		</form>
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+    <hr>
+	</div>
+
+  <div class="av-section" ng-show="plan != 4">    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <md-input-container class="md-block" flex-gt-xs>
+              <label>Cambia de plan:</label>
+              <md-select ng-model="RegPlan" ng-change="changePlan()">
+                <md-option value="1">Cheap</md-option>
+                <md-option value="2">Platinium</md-option>
+                <md-option value="3">Deluxe</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+
+          <!--div class="col-sm-6">
+            <a href="#/pago/{{guidEmpresa}}/{{RegPlan}}" class="av-btn-defaul btn-this">Cambiar Plan</a>
+          </div-->
+        </div>      </div>
+    </div>
+  </div>
+
+
+</div>

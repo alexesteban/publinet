@@ -1,0 +1,213 @@
+<h2 class="header smaller lighter blue text-center">
+	Empresas
+</h2>
+<div class="row">
+
+  <div class="text-center">
+    <a href="" class="btn btn-success" data-toggle="modal" data-target="#newBlog">Crear Empresa</a>
+  </div>
+
+  <!-- Modal -->
+  	<div class="modal fade" id="newBlog" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  	    <div class="modal-dialog">
+  	        <div class="modal-content">
+  	            <div class="modal-header">
+  	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+  	            <h4 class="modal-title" id="myModalLabel">Agregar una Empresa</h4>
+  	            </div>
+  	            <div class="modal-body">
+  	            	<form ng-submit="addEmpresa()">
+  	            		<div class="row">
+  	            			<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Razón Social(*)</span>
+                          <input type="text" ng-model="nombre" class="form-control" maxlength="50">
+  	            				</div>
+  	            			</div>
+											<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Dirección</span>
+                          <input type="text" ng-model="direccion" class="form-control" maxlength="50">
+  	            				</div>
+  	            			</div>
+  	            		</div>
+										<div class="row">
+  	            			<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Teléfono</span>
+                          <input type="text" ng-model="telefono" class="form-control"  maxlength="12">
+  	            				</div>
+  	            			</div>
+											<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Celular</span>
+                          <input type="text" ng-model="celular" class="form-control" maxlength="15">
+  	            				</div>
+  	            			</div>
+  	            		</div>
+										<div class="row">
+  	            			<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Email(*)</span>
+                          <input type="text" ng-model="email" class="form-control"  maxlength="50">
+  	            				</div>
+  	            			</div>
+											<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Facebook</span>
+                          <input type="text" ng-model="facebook" class="form-control">
+  	            				</div>
+  	            			</div>
+  	            		</div>
+										<div class="row">
+  	            			<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Twitter</span>
+                          <input type="text" ng-model="twitter" class="form-control">
+  	            				</div>
+  	            			</div>
+											<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Instagram</span>
+                          <input type="text" ng-model="instagram" class="form-control">
+  	            				</div>
+  	            			</div>
+  	            		</div>
+										<div class="row">
+  	            			<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Nit</span>
+                          <input type="text" ng-model="nit" class="form-control"  maxlength="30">
+  	            				</div>
+  	            			</div>
+											<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Pagina Web</span>
+                          <input type="text" ng-model="web" class="form-control">
+  	            				</div>
+  	            			</div>
+  	            		</div>
+										<div class="row">
+  	            			<div class="col-sm-12">
+  	            				<div class="form-group">
+                          <span>Descripción(*)</span>
+													<textarea ng-model="descripcion" class="form-control"  maxlength="255"></textarea>
+  	            				</div>
+  	            			</div>
+  	            		</div>
+										<div class="row">
+  	            			<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Ciudad (*)</span>
+													<select class="form-control" ng-model="ciudad">
+														<option value="{{ciudad.idCiudad}}" ng-repeat="ciudad in ciudades">{{ciudad.nombre}}</option>
+													</select>
+  	            				</div>
+  	            			</div>
+											<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Categoria (*)</span>
+													<select class="form-control" ng-model="categoria">
+														<option value="{{cat.id}}" ng-repeat="cat in categorias">{{cat.nombre}}</option>
+													</select>
+  	            				</div>
+  	            			</div>
+  	            		</div>
+										<div class="row">
+  	            			<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Puntaje Interno (*) 0 - 99</span>
+													<input type="number" class="form-control" ng-model="score" min="0" max="99">
+  	            				</div>
+  	            			</div>
+											<div class="col-sm-6">
+  	            				<div class="form-group">
+                          <span>Plan (*)</span>
+													<select class="form-control" ng-model="plan">
+														<option value="1" >Básico</option>
+														<option value="2" >Premium</option>
+														<option value="3" >Gold</option>
+														<option value="4" >Cortesia</option>
+													</select>
+  	            				</div>
+  	            			</div>
+  	            		</div>
+
+
+
+  	            		<div class="row">
+  	            			<div class="col-sm-12">
+                        <div ng-if="error" class="alert alert-danger" role="alert">{{error}}</div>
+              					<div ng-if="success" class="alert alert-float alert-success" role="alert" timeout>{{success}}</div>
+  	            				<div class="text-center">
+  	            					<button type="submit" class="btn btn-success">
+  	            						<i class="fa fa-plus"></i>
+  	            						CREAR
+  	            					</button>
+  	            				</div>
+  	            			</div>
+  	            		</div>
+  	            	</form>
+  	            </div>
+  	    </div>
+  	  </div>
+  	</div>
+  <!-- Fin -->
+
+	<div class="col-sm-12 col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>Lista de Empresas</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="table-responsive">
+
+								<table datatable class="Tabla table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th>Plan</th>
+											<th>Ciudad</th>
+											<th>Categoria</th>
+											<th>Puntaje</th>
+											<th>Visitas</th>
+											<th>Activo</th>
+											<th>Editar</th>
+											<th style="display:none">Guid</th>
+										</tr>
+									</thead>
+									<tbody>
+
+													<tr ng-repeat="empresa in empresas">
+														<td>{{empresa.nombre}}</td>
+														<td>{{empresa.plan}}</td>
+														<td>{{empresa.ciudad}}</td>
+														<td>{{empresa.categoria}}</td>
+														<td>{{empresa.inner_score}}</td>
+														<td>{{empresa.visitas}}</td>
+														<td>
+															<md-switch ng-change="updEstadoEmp(empresa.id,empresa.activo)" class="md-primary" md-no-ink aria-checked="empresa.activo" aria-label="Activo" ng-model="empresa.activo">
+														</td>
+														<td class="text-center">
+															<a href="#/empresa/{{empresa.id}}" class="icono-crud delete confirmation green" title="Editar" >
+                                <i class="fa fa-pencil bigger-130"></i>
+                              </a>
+                            </td>
+														<td style="display:none">{{empresa.guid}}</td>
+													</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,94 @@
+<h2 class="header smaller lighter blue text-center">
+	Categorias
+</h2>
+<div class="row">
+
+	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
+		<div class="widget-box">
+			<div class="widget-header">
+				<h4>Información</h4>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main">
+
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="table-responsive">
+
+								<form ng-submit="updInfo()">
+								<table class="Tabla table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Información de:</th>
+										</tr>
+									</thead>
+									<tbody>
+
+
+											<tr>
+												<td>
+													<span>Email</span>
+													<input type="text" ng-model="email" class="form-control" />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span>Teléfono 1</span>
+													<input type="text" ng-model="tel1" class="form-control" />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span>Teléfono 2</span>
+													<input type="text" ng-model="tel2" class="form-control" />
+												</td>
+											</tr>
+
+											<tr>
+												<td>
+													<span>celular</span>
+													<input type="text" ng-model="celular" class="form-control" />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span>direccion</span>
+													<input type="text" ng-model="direccion" class="form-control" />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span>facebook</span>
+													<input type="text" ng-model="facebook" class="form-control" />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span>twitter</span>
+													<input type="text" ng-model="twitter" class="form-control" />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span>instagram</span>
+													<input type="text" ng-model="instagram" class="form-control" />
+												</td>
+											</tr>
+
+									</tbody>
+								</table>
+								<div ng-if="error" class="alert alert-danger" role="alert">{{error}}</div>
+								<div ng-if="success" class="alert alert-float alert-success" role="alert" timeout>{{success}}</div>
+								<hr>
+								<button type="submit" class="btn btn-success">
+									ACTUALIZAR
+								</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
